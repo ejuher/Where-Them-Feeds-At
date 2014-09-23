@@ -22,7 +22,14 @@
 <input type="password" name="user[password]" id="password" class="form-control">
 </div>
 <button type="submit" class="btn btn-default">Submit</button>
-<% if use == 'login' %>
-	<button class="btn btn-info guest">Guest Login</button>
-<% end %>
 </form>
+<% if use == 'login' %>
+	<form action="<%= url %>" method="POST">
+		<input name="authenticity_token" 
+		   type="hidden" 
+		   value="<%= form_authenticity_token %>">
+		<input type="text" name="user[username]" value="guest" class="hidden">
+		<input type="password" name="user[password]" value="password" class="hidden">
+		<button type="submit" class="btn btn-info guest">Guest Login</button>
+	</form>
+<% end %>

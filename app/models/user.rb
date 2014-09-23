@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
-	validates :username, 
-		presence: { message: "Username can't be blank" }, 
-		uniqueness: { message: "That username is already taken" }
+	validates :username, presence: { message: "Username can't be blank" }, uniqueness: { message: "That username is already taken" }
 	validates :password_digest, presence: { message: "Password can't be blank" }
 	validates :password, length: { minimum: 6, allow_nil: true }
 
@@ -20,6 +18,7 @@ class User < ActiveRecord::Base
 	end
 
 	def password=(password)
+		@password = password
 		self.password_digest = BCrypt::Password.create(password);
 	end
 

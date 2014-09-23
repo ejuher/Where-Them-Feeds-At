@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
 
 		if @user.nil?
 			# show error messages?
-			render :new
+			# render :new
+			redirect_to root_url
 		else
 			login!(@user)
 			redirect_to user_url(@user)
