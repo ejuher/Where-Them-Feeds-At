@@ -1,3 +1,6 @@
+<% url = session_url if use == 'login' %>
+<% url = users_url if use == 'signup' %>
+
 <% unless flash[:errors].nil? %>
 	<ul>
 		<% flash[:errors].each do |error| %>
@@ -19,4 +22,7 @@
 <input type="password" name="user[password]" id="password" class="form-control">
 </div>
 <button type="submit" class="btn btn-default">Submit</button>
+<% if use == 'login' %>
+	<button class="btn btn-info guest">Guest Login</button>
+<% end %>
 </form>
