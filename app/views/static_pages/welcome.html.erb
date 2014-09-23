@@ -1,13 +1,29 @@
-Welcome!
+<h1>Welcome to BSSTRSS</h1>
 
-<div class="log-in">
-	<h2>Log In</h2>
-
-	<%= render "shared/login", url: session_url %>
+<div class="row">
+	<div class="col-md-6"></div>
+	<div class="col-md-4"><h2>Log In</h2></div>
 </div>
-	OR
-<div class="sign-up">
-	<h2>Create Account</h2>
 
-	<%= render "shared/login", url: users_url %>
+<div class="row">
+	<div class="col-md-6">
+		<p>Try BsstRss because it is the best rss feeder</p>
+		<p>View all your feeds in one site</p>
+		<p>Find new feeds</p>
+		<p>Keep track of your favorite content from all your favorite websites</p>
+	</div>
+	<div class="col-md-4"><%= render "shared/login", url: session_url %></div>
+</div>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-6"><h2>OR</h2></div>
+</div>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-6">
+		<h2>Create Account</h2>
+	</div>
+	<div class="col-md-4 col-md-offset-6">
+		<%= render "shared/login", url: users_url %>
+	</div>
 </div>
