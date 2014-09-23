@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 			redirect_to user_url(@user) # user show page 
 			# redirect_to feeds_url ??
 		else
-			flash.new[:errors] = @user.errors.full_messages
+			flash.now[:errors] = @user.errors.full_messages
 			render :new
 		end
 	end
