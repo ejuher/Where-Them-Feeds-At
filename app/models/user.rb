@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
 	attr_reader :password
 
+	has_many :subscriptions
+	has_many :feeds, through: :subscriptions
+
 	def self.generate_session_token
 		SecureRandom::urlsafe_base64(16)
 	end
