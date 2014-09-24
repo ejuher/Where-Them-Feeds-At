@@ -4,10 +4,17 @@ window.Bsstrss = {
   Views: {},
   Routers: {},
   initialize: function() {
-    // alert('Hello from Backbone!');
+    Bsstrss.feeds = new Bsstrss.Collections.Feeds()
+    Bsstrss.feeds.fetch();
+    new Bsstrss.Routers.BsstrssRouter({
+    	$sidebar: $('#sidebar-wrapper'),
+    	$content: $('page-content-wrapper')
+    })
+    Backbone.history.start();
   }
 };
 
 $(document).ready(function(){
+	console.log('READY')
   Bsstrss.initialize();
 });

@@ -1,0 +1,10 @@
+<li class="sidebar-brand">
+    <a href="#">
+        Bsstrss
+    </a>
+</li>
+<% feeds.each(function(feed) { %>
+  <li>
+    <a href="javascript.void(0)"><%= feed.escape('title') %></a>
+  </li>
+<% }) %>
