@@ -7,6 +7,7 @@ gem 'pg'
 gem 'newrelic_rpm'
 gem 'bootstrap-sass'
 gem 'feedjira'
+gem 'backbone-on-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
