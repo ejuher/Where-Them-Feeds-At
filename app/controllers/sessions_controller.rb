@@ -9,15 +9,16 @@ class SessionsController < ApplicationController
 		)
 
 		if @user.nil?
-			redirect_to root_url
+			redirect_to welcome_url
 		else
 			login!(@user)
-			redirect_to user_url(@user)
+			# redirect_to user_url(@user)
+			redirect_to root_url
 		end
 	end
 
 	def destroy
 		logout!
-		redirect_to root_url
+		redirect_to welcome_url
 	end
 end

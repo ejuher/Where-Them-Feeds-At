@@ -1,9 +1,9 @@
 Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
-	// routes: {
-	// 	'': index,
-	// },
+	routes: {
+		'': index,
+	},
 
-	// index: function() {
-		
-	// }
+	index: function() {
+		console.log('backbone index function')
+	}
 })

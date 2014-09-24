@@ -5,12 +5,11 @@ class UsersController < ApplicationController
 
 		if @user.save
 			login!(@user)
-			redirect_to user_url(@user) # user show page 
-			# redirect_to feeds_url ??
+			# redirect_to user_url(@user) 
+			redirect_to root_url
 		else
 			flash[:errors] = @user.errors.full_messages
-			# render :new
-			redirect_to root_url
+			redirect_to welcome_url
 		end
 	end
 
