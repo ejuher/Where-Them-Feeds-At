@@ -5,6 +5,9 @@
 </li>
 <% feeds.each(function(feed) { %>
   <li>
-    <a href="javascript.void(0)"><%= feed.escape('title') %></a>
+    <a href="javascript:void(0)">
+    	<img class="feed-icon" src="<%= feed.escape('url') + '/favicon.ico' %>"> 
+    	<%= feed.escape('title') %>
+    </a>
   </li>
 <% }) %>

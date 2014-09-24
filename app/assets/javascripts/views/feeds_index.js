@@ -8,7 +8,6 @@ Bsstrss.Views.FeedsIndex = Backbone.View.extend({
 	},
 
 	render: function() {
-		debugger
 		var renderContent = this.template({ feeds: this.collection });
 		this.$el.html(renderContent);
 		return this
