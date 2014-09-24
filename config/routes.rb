@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :feeds
 
-	root to: "static_pages#welcome"
+	root to: "static_pages#index"
+	get 'welcome', to: "static_pages#welcome"
 
   resources :users, only: [:create, :show]
   resource :session, only: [:new, :create, :destroy]
