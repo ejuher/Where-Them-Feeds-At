@@ -9,8 +9,6 @@ class SessionsController < ApplicationController
 		)
 
 		if @user.nil?
-			# show error messages?
-			# render :new
 			redirect_to root_url
 		else
 			login!(@user)
@@ -20,6 +18,6 @@ class SessionsController < ApplicationController
 
 	def destroy
 		logout!
-		redirect_to new_session_url
+		redirect_to root_url
 	end
 end

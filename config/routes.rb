@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :feeds
+
 	root to: "static_pages#welcome"
 
-  resources :users#, except: :index
+  resources :users, only: [:create, :show]
   resource :session, only: [:new, :create, :destroy]
 end

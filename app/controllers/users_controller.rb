@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-	def new
-	end
 
 	def create
 		@user = User.new(user_params)
@@ -14,18 +12,6 @@ class UsersController < ApplicationController
 			# render :new
 			redirect_to root_url
 		end
-	end
-
-	def edit
-	end
-
-	def update
-	end
-
-	def destroy
-	end
-
-	def index
 	end
 
 	def show
