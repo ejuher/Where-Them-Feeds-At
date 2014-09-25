@@ -8,28 +8,25 @@
 
 	<!-- Page Content -->
 	<div id="page-content-wrapper">
-    
+		<div class="container-fluid">
+		  <div class="row">
+		    <div class="col-lg-12">
+		      <button class="btn btn-primary sign-out">Sign Out</button>
+		  		<form id="add-feed">
+		    		<input type="text" placeholder="add feed url">
+		    	</form>
+		      <a href="#menu-toggle" 
+		      class="btn btn-default" 
+		      id="menu-toggle">
+		     		<span class="glyphicon glyphicon-chevron-left"></span>
+		      </a>
+			    <div id="main-content"></div>
+		    </div>
+		  </div>
+		</div>
 	</div>
 	<!-- /#page-content-wrapper -->
 
 </div>
 <!-- /#wrapper -->
 
-<!-- Menu Toggle Script -->
-<script>
-$("#menu-toggle").click(function(e) {
-  e.preventDefault();
-  $("#wrapper").toggleClass("toggled");
-});
-
-$("#add-feed").on('submit', function(event) {
-	event.preventDefault();
-	var form = $(event.currentTarget);
-	var url = form.find('input').val();
-	var feed = new Bsstrss.Models.Feed({ feed_url: url });
-	feed.save({}, {
-		success: Bsstrss.feeds.add(feed)
-	});
-});
-
-</script>

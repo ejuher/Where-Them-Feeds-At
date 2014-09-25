@@ -10,7 +10,7 @@ window.Bsstrss = {
     Bsstrss.entries.fetch();
     new Bsstrss.Routers.BsstrssRouter({
     	$sidebar: $('#sidebar-wrapper'),
-    	$content: $('#page-content-wrapper')
+    	$content: $('#main-content')
     })
     Backbone.history.start();
   }
