@@ -3,8 +3,6 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 	initialize: function(options) {
 		this.$sidebar = options.$sidebar;
 		this.$content = options.$content;
-
-		// create sidebar view and render and put on dom
 	},
 
 	routes: {
@@ -12,22 +10,35 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 	},
 
 	index: function() {
-		// is it ok to render 2 seperate views here?
-		// one for this.$sidebar and one for this.$content
 		Bsstrss.feeds.fetch();
+		Bsstrss.entries.fetch();
+
 		var FeedsIndexView = new Bsstrss.Views.FeedsIndex({ 
 			collection: Bsstrss.feeds
 		});
 		this._swapViews(this.$sidebar, FeedsIndexView);
 
-
+		var EntriesIndexView = new Bsstrss.Views.EntriesIndex({
+			collection: Bsstrss.entries
+		});
+		this._swapViews(this.$content, EntriesIndexView);
 	},
 
 	// may need to create seperate swap functions for this.$sidebar 
 	// and this.%content
 	_swapViews: function($target, view) {
-		this.currentView && this.currentView.remove()
-		this.currentView = view;
-		$target.html(this.currentView.render().$el);
+		// make currentView into a hash currentViews
+		// keys to the hash are $target
+		var id = $target.attr('id')
+		this.currentViews = this.currentViews || {}
+		if (id in this.currentViews) { this.currentViews[id].remove(); }
+		this.currentViews[id] = view;
+		$target.html(this.currentViews[id].render().$el);
 	}
+
+	// _swapViews: function($target, view) {
+	// 	this.currentView && this.currentView.remove()
+	// 	this.currentView = view;
+	// 	$target.html(this.currentView.render().$el);
+	// }
 })
