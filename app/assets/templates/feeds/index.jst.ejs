@@ -6,8 +6,14 @@
 <% feeds.each(function(feed) { %>
   <li>
     <a href="javascript:void(0)">
-    	<img class="feed-icon" src="<%= feed.escape('url') + '/favicon.ico' %>"> 
+    	<img class="feed-icon" id="<%= feed.escape('title') %>" src="<%= feed.escape('url') + '/favicon.ico' %>"> 
     	<%= feed.escape('title') %>
     </a>
   </li>
 <% }) %>
+
+<script>
+$('img.feed-icon').error(function(){
+	$(this).attr('src', 'http://www.pandasecurity.com/NR/rdonlyres/8C19BC46-887E-4BF1-B118-D3E1BA92573F/0/ico_rss.gif')
+})
+</script>

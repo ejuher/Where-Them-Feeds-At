@@ -8,7 +8,6 @@ class Feed < ActiveRecord::Base
 		feed = Feed.find_by_feed_url(url)
 		return feed if feed 
 		feed = Feedjira::Feed.fetch_and_parse(url)
-		puts "url: #{url} <<<<<<<<<<<<<<<<<<<<<"
 		if feed == 0 
 			return nil
 		else
@@ -20,7 +19,6 @@ class Feed < ActiveRecord::Base
 			})
 			# this should return new_feed
 		end
-
 		# extract entries
 	end
 end
