@@ -8,8 +8,9 @@ class Feed < ActiveRecord::Base
 		feed = Feed.find_by_feed_url(url)
 		return feed if feed 
 		feed = Feedjira::Feed.fetch_and_parse(url)
+		puts "url: #{url} <<<<<<<<<<<<<<<<<<<<<"
 		if feed == 0 
-			raise "invalid url"
+			return nil
 		else
 			new_feed = Feed.create!({
 				feed_url: url,
@@ -21,13 +22,5 @@ class Feed < ActiveRecord::Base
 		end
 
 		# extract entries
-		# deal with errors
 	end
-
-	# if url cannot be found
-		# add to db
-		# return the saved object
-	# end
-	# get the id of feed and current_user id.
-	# make subscription
 end
