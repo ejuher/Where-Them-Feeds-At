@@ -6,9 +6,9 @@ class FeedsController < ApplicationController
 
 	def create
 		feed = Feed.find_or_create_by_url(feed_params[:feed_url])
-		if feed 
+		if !!feed 
 			# create subscription. NO, move this to create user_category
-			# Subscription.create!({ user_id: current_user.id, feed_id: feed.id })
+			Subscription.create!({ user_id: current_user.id, feed_id: feed.id })
 			render json: feed # do I need to render this?
 		else
 			raise "invalid url"

@@ -4,7 +4,7 @@ Bsstrss.Views.FeedsIndex = Backbone.View.extend({
 	className: "sidebar-nav",
 
 	initialize: function() {
-		this.listenTo(this.collection, 'sync', this.render);
+		this.listenTo(this.collection, 'sync add remove', this.render);
 	},
 
 	render: function() {
