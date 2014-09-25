@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :categories
+
   resources :feeds
 
 	root to: "static_pages#index"

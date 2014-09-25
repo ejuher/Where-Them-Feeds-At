@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 	has_many :subscriptions
 	has_many :feeds, through: :subscriptions
 
+	has_many :user_categories
+	has_many :categories, through: :user_categories
+
 	def self.generate_session_token
 		SecureRandom::urlsafe_base64(16)
 	end
