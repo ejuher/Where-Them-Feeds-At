@@ -13,7 +13,5 @@ $(document).ready(function(){
 	    success: Bsstrss.feeds.add(feed)
 	  });
 	});
-	debugger
-	console.log('LOADED');
 })
 

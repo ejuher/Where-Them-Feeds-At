@@ -6,7 +6,8 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 	},
 
 	routes: {
-		'': 'index'
+		'': 'index',
+		'feed/:id': 'showFeed'
 	},
 
 	index: function() {
@@ -22,6 +23,12 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 			collection: Bsstrss.entries
 		});
 		this._swapViews(this.$content, EntriesIndexView);
+	},
+
+	showFeed: function(id) {
+		// get a model instance of the feed
+		// create new feedShowView with model: feed
+		// swap dat view
 	},
 
 
