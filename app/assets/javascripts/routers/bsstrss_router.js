@@ -10,15 +10,18 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 		'feed/:id': 'showFeed'
 	},
 
-	index: function() {
+	sidebarIndex: function() {
 		Bsstrss.feeds.fetch();
-		Bsstrss.entries.fetch();
-
+		
 		var FeedsIndexView = new Bsstrss.Views.FeedsIndex({ 
 			collection: Bsstrss.feeds
 		});
 		this._swapViews(this.$sidebar, FeedsIndexView);
+	},
 
+	index: function() {
+		Bsstrss.entries.fetch();
+		
 		var EntriesIndexView = new Bsstrss.Views.EntriesIndex({
 			collection: Bsstrss.entries
 		});
