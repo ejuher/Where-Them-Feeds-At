@@ -1,5 +1,5 @@
 Bsstrss.Collections.Feeds = Backbone.Collection.extend({
-	url: '/feeds',
+	url: '/api/feeds',
 	model: Bsstrss.Models.Feed,
 
 	getOrFetch: function(id) {

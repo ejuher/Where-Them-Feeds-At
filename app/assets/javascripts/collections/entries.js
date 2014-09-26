@@ -1,5 +1,5 @@
 Bsstrss.Collections.Entries = Backbone.Collection.extend({
-	url: '/entries',
+	url: '/api/entries',
 	model: Bsstrss.Models.Entry,
 
 	getOrFetch: function(id) {

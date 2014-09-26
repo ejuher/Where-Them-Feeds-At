@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :entries
 
-  resources :categories
-
-  resources :feeds
-
+	namespace :api do
+		resources :entries, only: [:create, :index, :show]
+	  resources :feeds, only: [:create, :index, :show, :destroy]
+	end
+  
 	root to: "static_pages#index"
 	get 'welcome', to: "static_pages#welcome"
 
