@@ -1,6 +1,12 @@
 $(document).ready(function(){
 	$("#menu-toggle").click(function(e) {
 	  e.preventDefault();
+	  iconSpan = e.currentTarget.getElementsByTagName('span')[0];
+	  if (iconSpan.className === "glyphicon glyphicon-chevron-left") {
+	  	iconSpan.className = "glyphicon glyphicon-chevron-right";
+	  } else {
+	  	iconSpan.className = "glyphicon glyphicon-chevron-left";
+	  }
 	  $("#wrapper").toggleClass("toggled");
 	});
 

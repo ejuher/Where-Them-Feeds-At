@@ -35,13 +35,10 @@ class Feed < ActiveRecord::Base
 	end
 
 	def get_entries
-		# fetch dat feed
 		fj_feed = Feedjira::Feed.fetch_and_parse(self.feed_url)
 		existing_entry_urls = self.entries.pluck(:url)
 
-		# iterate through feed.entries
 		fj_feed.entries.each do |entry|
-			# if entry does not exist in feed.entries
 			unless existing_entry_urls.include?(fj_feed.url)			
 				Entry.create!({
 					title: entry.title,
@@ -52,7 +49,5 @@ class Feed < ActiveRecord::Base
 				})
 			end
 		end
-		# save each entry
-		# return feed
 	end
 end
