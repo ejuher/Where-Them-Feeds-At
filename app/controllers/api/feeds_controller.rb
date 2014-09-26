@@ -8,8 +8,6 @@ module Api
 		def create
 			feed = Feed.find_or_create_by_url(feed_params[:feed_url])
 			if !!feed 
-				# create subscription. move this to create user_category?
-				Subscription.create!({ user_id: current_user.id, feed_id: feed.id })
 				render json: feed 
 			else
 				raise "invalid url"

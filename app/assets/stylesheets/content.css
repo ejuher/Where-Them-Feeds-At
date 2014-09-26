@@ -5,3 +5,13 @@ div.header {
 	padding-bottom: 11px;
 
 }
+
+div.entry-index-item {
+	max-height: 400px;
+	width: 650;
+}
+
+div.entry-index-item img {
+	max-height: 200px;
+	float: left;
+}

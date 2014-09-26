@@ -26,6 +26,7 @@ class Feed < ActiveRecord::Base
 				})
 			end
 		end
+		Subscription.create_subscription(current_user.id, feed.id)
 		feed.get_entries
 		return feed
 	end
@@ -35,14 +36,8 @@ class Feed < ActiveRecord::Base
 		existing_entry_urls = self.entries.pluck(:url)
 
 		fj_feed.entries.each do |entry|
-			unless existing_entry_urls.include?(fj_feed.url)			
-				Entry.create!({
-					title: entry.title,
-					url: entry.url,
-					summary: entry.summary,
-					published: entry.published,
-					feed_id: self.id
-				})
+			unless existing_entry_urls.include?(fj_feed.url)
+				Entry.create_by_fj(fj_feed, self.id)
 			end
 		end
 	end

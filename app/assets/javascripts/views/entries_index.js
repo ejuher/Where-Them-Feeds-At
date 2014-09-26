@@ -10,7 +10,6 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 	},
 
 	addEntry: function(entry) {
-		console.log('here');
 		var newEntry = new Bsstrss.Views.EntryIndexItem({ model: entry });
 		this.addSubview('div#entries', newEntry);
 	},
