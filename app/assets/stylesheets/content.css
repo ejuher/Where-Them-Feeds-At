@@ -3,15 +3,17 @@ div.header {
 	margin-top: -8px;
 	margin-bottom: 15px;
 	padding-bottom: 11px;
-
 }
 
 div.entry-index-item {
 	max-height: 400px;
 	width: 650;
+	overflow: hidden;
+	padding-bottom: 15px;
 }
 
 div.entry-index-item img {
 	max-height: 200px;
 	float: left;
 }
+

@@ -8,6 +8,7 @@ module Api
 		def create
 			feed = Feed.find_or_create_by_url(feed_params[:feed_url])
 			if !!feed 
+				Subscription.create_subscription(current_user.id, feed.id)
 				render json: feed 
 			else
 				raise "invalid url"

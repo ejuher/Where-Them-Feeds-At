@@ -10,6 +10,8 @@ gem 'feedjira'
 gem 'simple-rss'
 gem 'backbone-on-rails'
 
+gem 'opengraph_parser'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

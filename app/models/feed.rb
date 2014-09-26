@@ -26,7 +26,6 @@ class Feed < ActiveRecord::Base
 				})
 			end
 		end
-		Subscription.create_subscription(current_user.id, feed.id)
 		feed.get_entries
 		return feed
 	end
@@ -39,7 +38,7 @@ class Feed < ActiveRecord::Base
 		else
 			fj_feed.entries.each do |entry|
 				unless existing_entry_urls.include?(entry.url)
-					Entry.create_by_fj(entry, self.id)
+					Entry.create_by_fj(entry.url, self.id)
 				end
 			end
 		end
