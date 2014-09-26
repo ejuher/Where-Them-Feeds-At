@@ -38,7 +38,7 @@ class Feed < ActiveRecord::Base
 		else
 			fj_feed.entries.each do |entry|
 				unless existing_entry_urls.include?(entry.url)
-					Entry.create_by_fj(entry.url, self.id)
+					Entry.create_by_fj(entry, self.id)
 				end
 			end
 		end

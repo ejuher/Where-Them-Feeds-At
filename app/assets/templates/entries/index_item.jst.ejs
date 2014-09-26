@@ -5,7 +5,8 @@
 	  </div>
 	  <div class="panel-body">
 	  	<h4><%= entry.published %></h4>
-	    <%= entry.get('summary') %>
+	  	<img src="<%= entry.escape('image') %>">
+	    <p><%= entry.escape('summary') %></p>
 	  </div>
 	</div>			    
 </div>
