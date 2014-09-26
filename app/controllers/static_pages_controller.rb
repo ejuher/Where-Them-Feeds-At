@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
 
 	def index
 		if logged_in?
+			current_user.feeds.each { |feed| feed.get_entries }
 			render :index
 		else
 			redirect_to welcome_url
