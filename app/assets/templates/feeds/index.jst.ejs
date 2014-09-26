@@ -6,8 +6,10 @@
 <% feeds.each(function(feed) { %>
   <li>
     <a href="javascript:void(0)">
+      <% var title = feed.escape('title') %>
+      <% if (title.length > 23) { title = title.slice(0,23) + " ..." } %>
     	<img class="feed-icon" id="<%= feed.escape('title') %>" src="<%= feed.escape('url') + '/favicon.ico' %>"> 
-    	<%= feed.escape('title') %>
+    	<%= title %>
     </a>
   </li>
 <% }) %>

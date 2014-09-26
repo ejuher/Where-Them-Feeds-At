@@ -34,7 +34,6 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 		// swap dat view
 	},
 
-
 	_swapViews: function($target, view) {
 		var id = $target.attr('id')
 		this.currentViews = this.currentViews || {}

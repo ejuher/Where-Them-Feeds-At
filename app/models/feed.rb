@@ -12,26 +12,22 @@ class Feed < ActiveRecord::Base
 	def self.find_or_create_by_url(url)
 		feed = Feed.find_by_feed_url(url)
 
+		if !feed
+			fj_feed = Feedjira::Feed.fetch_and_parse(url)
 
-		if feed
-			feed.get_entries
-			return feed
-		end 
-
-		feed = Feedjira::Feed.fetch_and_parse(url)
-
-		if feed.class == Fixnum 
-			return nil
-		else
-			new_feed = Feed.create!({
-				feed_url: url,
-				url: feed.url, 
-				title: feed.title, 
-				description: feed.description
-			})
-			feed.get_entries
-			return new_feed
+			if fj_feed.class == Fixnum 
+				return nil
+			else
+				feed = Feed.create!({
+					feed_url: url,
+					url: fj_feed.url, 
+					title: fj_feed.title, 
+					description: fj_feed.description
+				})
+			end
 		end
+		feed.get_entries
+		return feed
 	end
 
 	def get_entries
