@@ -15,5 +15,11 @@ div.entry-index-item {
 div.entry-index-item img {
 	max-height: 200px;
 	float: left;
+	margin-right: 30px;
+	margin-left: 15px;
 }
 
+small.published {
+	margin-top: 4px;
+	float: right;
+}
