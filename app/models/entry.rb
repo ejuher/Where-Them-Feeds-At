@@ -7,7 +7,10 @@ class Entry < ActiveRecord::Base
 			image_url = og_entry.images.first
 		else
 			# undefined method `[]' for nil:NilClass
-			image_url = /img.*src\W+(.*.png|.jpg|.jpeg|.gif)/.match(fj.summary)[1]
+			p 'here'
+			p fj.summary
+			reg_ex = /img.*src\W+(.*png|.*jpg|.*jpeg|.*gif)/.match(fj.summary)
+			(!!reg_ex && reg_ex.length == 2) ? image_url = reg_ex[1] : ''
 		end
 
 		Entry.create!({

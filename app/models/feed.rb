@@ -34,7 +34,7 @@ class Feed < ActiveRecord::Base
 		fj_feed = Feedjira::Feed.fetch_and_parse(self.feed_url)
 		existing_entry_urls = self.entries.pluck(:url)
 		if fj_feed == 0 
-			puts "dead url: #{fj_feed.title}"
+			puts "dead url: #{self.feed_url}"
 		else
 			fj_feed.entries.each do |entry|
 				unless existing_entry_urls.include?(entry.url)
