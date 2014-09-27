@@ -1,0 +1,1 @@
+json.(entry, :title, :published, :image, :summary)

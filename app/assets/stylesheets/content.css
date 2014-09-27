@@ -23,3 +23,8 @@ small.published {
 	margin-top: 4px;
 	float: right;
 }
+
+div.sub-heading {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
 	namespace :api do
-		resources :entries, only: [:create, :index, :show]
-	  resources :feeds, only: [:create, :index, :show, :destroy]
+		resources :entries, 
+			only: [:create, :index, :show], 
+			defaults: { format: :json }
+	  resources :feeds, 
+	  	only: [:create, :index, :show, :destroy],
+	  	defaults: { format: :json }
 	end
   
 	root to: "static_pages#index"
