@@ -8,7 +8,7 @@ Bsstrss.Collections.Entries = Backbone.Collection.extend({
 		if (entry) {
 			entry.fetch();
 		} else {
-			entry = new Bsstrss.Models.entry({ id: id });
+			entry = new Bsstrss.Models.Entry({ id: id });
 			entry.fetch({
 				success: function() { entries.add(entry) }
 			});

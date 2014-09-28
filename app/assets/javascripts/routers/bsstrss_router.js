@@ -7,7 +7,8 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 
 	routes: {
 		'': 'index',
-		'feed/:id': 'showFeed'
+		'feed/:id': 'showFeed',
+		'entry/:id': 'showEntry'
 	},
 
 	sidebarIndex: function() {
@@ -32,6 +33,12 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 		var feed = Bsstrss.feeds.getOrFetch(id);
 		var feedShowView = new Bsstrss.Views.FeedShow({ model: feed });
 		this._swapViews(this.$content, feedShowView);
+	},
+
+	showEntry: function(id) {
+		var entry = Bsstrss.entries.getOrFetch(id);
+		var entryShowView = new Bsstrss.Views.EntryShow({ model: entry });
+		this._swapViews(this.$content, entryShowView);
 	},
 
 	_swapViews: function($target, view) {
