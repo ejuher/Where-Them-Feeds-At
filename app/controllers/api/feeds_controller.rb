@@ -17,6 +17,11 @@ module Api
 			end
 		end
 
+		def show
+			@feed = Feed.find(params[:id])
+			render "api/feeds/show"
+		end
+
 		private
 
 		def feed_params

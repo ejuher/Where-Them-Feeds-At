@@ -29,9 +29,9 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 	},
 
 	showFeed: function(id) {
-		// get a model instance of the feed
-		// create new feedShowView with model: feed
-		// swap dat view
+		var feed = Bsstrss.feeds.getOrFetch(id);
+		var feedShowView = new Bsstrss.Views.FeedShow({ model: feed });
+		this._swapViews(this.$content, feedShowView);
 	},
 
 	_swapViews: function($target, view) {

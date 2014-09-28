@@ -10,7 +10,9 @@ Bsstrss.Collections.Feeds = Backbone.Collection.extend({
 		} else {
 			feed = new Bsstrss.Models.Feed({ id: id });
 			feed.fetch({
-				success: function() { feeds.save(feed) }
+				success: function() { 
+					feeds.add(feed); 
+				}
 			});
 		}
 		return feed;

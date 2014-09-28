@@ -10,7 +10,7 @@ Bsstrss.Collections.Entries = Backbone.Collection.extend({
 		} else {
 			entry = new Bsstrss.Models.entry({ id: id });
 			entry.fetch({
-				success: function() { entries.save(entry) }
+				success: function() { entries.add(entry) }
 			});
 		}
 		return entry;
