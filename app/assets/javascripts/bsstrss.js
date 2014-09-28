@@ -6,13 +6,12 @@ window.Bsstrss = {
   initialize: function() {
     Bsstrss.feeds = new Bsstrss.Collections.Feeds();
     Bsstrss.feeds.fetch();
-    // render the sidebar
 
     Bsstrss.entries = new Bsstrss.Collections.Entries();
     Bsstrss.entries.fetch();
     var router = new Bsstrss.Routers.BsstrssRouter({
     	$sidebar: $('#sidebar-wrapper'),
-    	$content: $('#main-content')
+    	$content: $('#main-content'),
     })
     Backbone.history.start();
     router.sidebarIndex();

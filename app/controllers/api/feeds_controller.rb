@@ -11,7 +11,9 @@ module Api
 				Subscription.create_subscription(current_user.id, feed.id)
 				render json: feed 
 			else
-				raise "invalid url"
+				# flash.now[:errors] = "Invalid URL"
+				# render :new
+				raise "Invalid URL"
 			end
 		end
 

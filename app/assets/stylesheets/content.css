@@ -28,3 +28,7 @@ div.sub-heading {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+span.form-control-feedback {
+	top: 0px;
+}

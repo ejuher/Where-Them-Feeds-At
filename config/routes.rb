@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 			only: [:create, :index, :show], 
 			defaults: { format: :json }
 	  resources :feeds, 
-	  	only: [:create, :index, :show, :destroy],
+	  	only: [:create, :index, :show],
 	  	defaults: { format: :json }
 	end
   
