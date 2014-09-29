@@ -1,7 +1,11 @@
 module Api
 	class EntriesController < ApplicationController
 		def index
-			@entries = current_user.entries.order(published: :desc).page params[:page] #.limit(50)
+			if params[:feed_id] 
+				@entries = Feed.find(params[:feed_id]).entries.page params[:page]
+			else
+				@entries = current_user.entries.order(published: :desc).page params[:page] #.limit(50)
+			end
 			render 'api/entries/index'
 		end
 

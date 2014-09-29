@@ -11,13 +11,12 @@ module Api
 				Subscription.create_subscription(current_user.id, feed.id)
 				render json: feed 
 			else
-				# flash.now[:errors] = "Invalid URL"
-				# render :new
 				raise "Invalid URL"
 			end
 		end
 
 		def show
+			@page = params[:page]
 			@feed = Feed.find(params[:id])
 			render "api/feeds/show"
 		end

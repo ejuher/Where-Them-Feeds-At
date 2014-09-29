@@ -7,7 +7,7 @@ window.Bsstrss = {
     Bsstrss.feeds = new Bsstrss.Collections.Feeds();
     Bsstrss.feeds.fetch();
 
-    Bsstrss.entries = new Bsstrss.Collections.Entries();
+    Bsstrss.entries = new Bsstrss.Collections.Entries([], {});
     Bsstrss.entries.fetch();
     var router = new Bsstrss.Routers.BsstrssRouter({
     	$sidebar: $('#sidebar-wrapper'),

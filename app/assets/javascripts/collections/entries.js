@@ -1,14 +1,19 @@
 Bsstrss.Collections.Entries = Backbone.Collection.extend({
-	url: '/api/entries',
+	url: function() {
+		return this.feed ? '/api/feeds/' + this.feed.id + '/entries' : 'api/entries';
+	},
+
 	model: Bsstrss.Models.Entry,
 
-	initialize: function() {
+	initialize: function(models, options) {
+		this.feed = options.feed;
 		this.page = 1;
 	},
 
 	getNextPage: function() {
 		this.page += 1;
 		this.fetch({ 
+
 			remove: false, data: { page: this.page }
 		});
 	},

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 			defaults: { format: :json }
 	  resources :feeds, 
 	  	only: [:create, :index, :show],
-	  	defaults: { format: :json }
+	  	defaults: { format: :json } do 
+	  		resources :entries, only: [:index]
+	  	end
 	end
   
 	root to: "static_pages#index"

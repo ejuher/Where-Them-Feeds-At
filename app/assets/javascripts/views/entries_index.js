@@ -3,6 +3,7 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 	className: "container-fluid",
 
 	initialize: function() {
+		$(window).off("scroll");
 		this.listenTo(this.collection, 'sync add', this.render);
 		this.listenTo(this.collection, 'sync add', this.addEntry);
 		// add subviews
@@ -70,7 +71,6 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 	    	Bsstrss.feeds.add(feed) 
 		    var feedShow = new Bsstrss.Views.FeedShow({ model: feed })
 		    Backbone.history.navigate("/feed/" + feed.id, { trigger: true })
-		    // location.href = "/#feed/" +  feed.id
 	    },
 	    error: function() {
 	    	console.log('save error');
