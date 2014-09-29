@@ -78,7 +78,16 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 	},
 
 	signOut: function(event) {
-		// go to the session destroy action, use delete method
-
+		event.preventDefault();
+		$.ajax({
+			type: 'DELETE',
+			url: '/session',
+			dataType: 'json',
+			success: function() {
+				// window.location = "/welcome";
+				debugger
+				location.href = "/welcome"
+			}
+		})
 	}
 })

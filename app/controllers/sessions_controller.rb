@@ -19,6 +19,9 @@ class SessionsController < ApplicationController
 
 	def destroy
 		logout!
-		redirect_to welcome_url
+		respond_to do |format|
+			format.html { redirect_to welcome_url }
+			format.json { render json: { message: "logout successful" }} 
+		end
 	end
 end
