@@ -22,7 +22,9 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 	},
 
 	render: function() {
-		var renderContent = this.template();
+		var feed = new Bsstrss.Models.Feed();
+		feed.set('title', 'All'); 
+		var renderContent = this.template({ feed: feed });
 		this.$el.html(renderContent);
 		this.attachSubviews();
 		return this;

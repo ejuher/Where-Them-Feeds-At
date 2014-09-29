@@ -8,16 +8,11 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	addEntry: function(entry) {
-		console.log('adding entry');
-		debugger
 		var newEntry = new Bsstrss.Views.EntryIndexItem({ model: entry });
-
 		this.addSubview("div#entries", newEntry);
-
 	},
 
 	render: function() {
-		console.log('rendering');
 		var renderContent = this.template({ feed: this.model });
 		this.$el.html(renderContent);
 		this.attachSubviews();
