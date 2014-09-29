@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
 			redirect_to welcome_url
 		else
 			login!(@user)
-			# redirect_to user_url(@user)
 			redirect_to root_url
 		end
 	end
@@ -21,7 +20,7 @@ class SessionsController < ApplicationController
 		logout!
 		respond_to do |format|
 			format.html { redirect_to welcome_url }
-			format.json { render json: { message: "logout successful" }} 
+			format.json { render json: { message: "logout successful" } } 
 		end
 	end
 end

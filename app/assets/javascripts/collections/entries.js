@@ -2,6 +2,17 @@ Bsstrss.Collections.Entries = Backbone.Collection.extend({
 	url: '/api/entries',
 	model: Bsstrss.Models.Entry,
 
+	initialize: function() {
+		this.page = 1;
+	},
+
+	getNextPage: function() {
+		this.page += 1;
+		this.fetch({ 
+			remove: false, data: { page: this.page }
+		});
+	},
+
 	getOrFetch: function(id) {
 		var entries = this;
 		var entry = this.get(id);

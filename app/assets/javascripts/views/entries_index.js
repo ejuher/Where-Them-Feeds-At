@@ -13,7 +13,7 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 		'click button#sign-out': 'signOut',
 		'keydown #add-feed': 'clearErrors',
 		'submit #add-feed': 'addFeed',
-		'click #menu-toggle': 'toggleMenu'
+		'click #menu-toggle': 'toggleMenu',
 	},
 
 	addEntry: function(entry) {
@@ -27,7 +27,22 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 		var renderContent = this.template({ feed: feed });
 		this.$el.html(renderContent);
 		this.attachSubviews();
+		this.listenForScroll();
 		return this;
+	},
+
+	listenForScroll: function() {
+		$(window).off("scroll");
+		var throttledCallback = _.throttle(this.nextPage.bind(this), 200);
+		$(window).on("scroll", throttledCallback);
+	},
+
+	nextPage: function() {
+		var self = this;
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+      console.log("scrolled to bottom!");
+      self.collection.getNextPage();
+    }
 	},
 
 	toggleMenu: function(event) {
@@ -84,8 +99,6 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 			url: '/session',
 			dataType: 'json',
 			success: function() {
-				// window.location = "/welcome";
-				debugger
 				location.href = "/welcome"
 			}
 		})

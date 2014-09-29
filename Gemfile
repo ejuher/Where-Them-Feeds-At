@@ -7,10 +7,10 @@ gem 'pg'
 gem 'newrelic_rpm'
 gem 'bootstrap-sass'
 gem 'feedjira'
-gem 'simple-rss'
 gem 'backbone-on-rails'
 
 gem 'opengraph_parser'
+gem 'kaminari'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

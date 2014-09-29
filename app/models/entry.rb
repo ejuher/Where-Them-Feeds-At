@@ -1,6 +1,8 @@
 class Entry < ActiveRecord::Base
 	belongs_to :feed
 
+	paginates_per 6
+
 	def self.create_by_fj(fj, id)
 		og_entry = OpenGraph.new(fj.url)
 		if og_entry.images.length == 1
