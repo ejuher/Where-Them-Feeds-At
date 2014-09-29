@@ -9,12 +9,12 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 		this.collection.each(this.addEntry.bind(this));
 	},
 
-	events: {
-		// sign out
-		// add feed
-		// menu toggle
-		'#menu-toggle click': 'toggleMenu'
-	},
+	// events: {
+	// 	// sign out
+	// 	// add feed
+	// 	// menu toggle
+	// 	'#menu-toggle click': 'toggleMenu'
+	// },
 
 	addEntry: function(entry) {
 		var newEntry = new Bsstrss.Views.EntryIndexItem({ model: entry });
