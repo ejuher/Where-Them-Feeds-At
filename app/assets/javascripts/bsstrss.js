@@ -11,7 +11,7 @@ window.Bsstrss = {
     Bsstrss.entries.fetch();
     var router = new Bsstrss.Routers.BsstrssRouter({
     	$sidebar: $('#sidebar-wrapper'),
-    	$content: $('#main-content'),
+    	$content: $('#page-content-wrapper'),
     })
     Backbone.history.start();
     router.sidebarIndex();

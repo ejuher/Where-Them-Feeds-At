@@ -7,7 +7,7 @@ module Api
 
 		def show
 			@entry = Entry.find(params[:id])
-			render json: @entry
+			render 'api/entries/show'
 		end
 	end
 end
