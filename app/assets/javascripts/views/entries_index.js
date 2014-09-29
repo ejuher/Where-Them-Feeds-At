@@ -9,12 +9,12 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 		this.collection.each(this.addEntry.bind(this));
 	},
 
-	// events: {
-	// 	// sign out
-	// 	// add feed
-	// 	// menu toggle
-	// 	'#menu-toggle click': 'toggleMenu'
-	// },
+	events: {
+		'click button#sign-out': 'signOut',
+		'keydown #add-feed': 'clearErrors',
+		'submit #add-feed': 'addFeed',
+		'click #menu-toggle': 'toggleMenu'
+	},
 
 	addEntry: function(entry) {
 		var newEntry = new Bsstrss.Views.EntryIndexItem({ model: entry });
@@ -32,12 +32,53 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 
 	toggleMenu: function(event) {
 		event.preventDefault();
-	  iconSpan = e.currentTarget.getElementsByTagName('span')[0];
+	  iconSpan = event.currentTarget.getElementsByTagName('span')[0];
 	  if (iconSpan.className === "glyphicon glyphicon-chevron-left") {
 	  	iconSpan.className = "glyphicon glyphicon-chevron-right";
 	  } else {
 	  	iconSpan.className = "glyphicon glyphicon-chevron-left";
 	  }
 	  $("#wrapper").toggleClass("toggled");
+	},
+
+	addFeed: function(event) {
+		event.preventDefault();
+	  var $form = $(event.currentTarget);
+	  var url = $form.find('input').val();
+	  $form.find('input').val('');
+	  var feed = new Bsstrss.Models.Feed({ feed_url: url });
+	  // animation to show that its processing
+	  feed.save({}, {
+	    success: function () {
+	    	console.log('save success');
+	    	// turn off processing animation
+	    	Bsstrss.feeds.add(feed) 
+		    var feedShow = new Bsstrss.Views.FeedShow({ model: feed })
+		    Backbone.history.navigate("/feed/" + feed.id, { trigger: true })
+		    // location.href = "/#feed/" +  feed.id
+	    },
+	    error: function() {
+	    	console.log('save error');
+	    	var $input = $form.find('input');
+	    	var $div = $form.find('div');
+	    	var $span = $("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
+
+	    	// turn off processing animation
+	    	$input.attr('placeholder', 'Invalid URL');
+	    	$div.addClass('has-error');
+	    	$div.append($span);
+	    }
+	  });
+	},
+
+	clearErrors: function(event) {
+		$(event.currentTarget).find('div').removeClass('has-error');
+		$(event.currentTarget).find('span').remove();
+		$(event.currentTarget).find('input').attr('placeholder', 'add feed url');
+	},
+
+	signOut: function(event) {
+		// go to the session destroy action, use delete method
+
 	}
 })

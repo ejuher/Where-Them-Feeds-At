@@ -1,1 +1,1 @@
-json.(entry, :title, :published, :image, :summary)
+json.(entry, :id, :title, :published, :image, :summary)

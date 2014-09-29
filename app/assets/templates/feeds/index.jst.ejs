@@ -1,11 +1,11 @@
 <li class="sidebar-brand">
     <a href="/">
-        Bsstrss
+        WTF(a)
     </a>
 </li>
 <% feeds.each(function(feed) { %>
   <li>
-    <a href="javascript:void(0)">
+    <a href="<%= '/#feed/' + feed.id %>">
       <% var title = feed.escape('title') %>
       <% if (title.length > 23) { title = title.slice(0,23) + " ..." } %>
     	<img class="feed-icon" id="<%= feed.escape('title') %>" src="<%= feed.escape('url') + '/favicon.ico' %>"> 

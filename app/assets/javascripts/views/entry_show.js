@@ -6,7 +6,6 @@ Bsstrss.Views.EntryShow = Backbone.View.extend({
 	},
 
 	render: function() {
-		debugger
 		var renderContent = this.template({ entry: this.model });
 		this.$el.html(renderContent);
 		return this;
