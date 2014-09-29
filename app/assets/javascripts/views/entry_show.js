@@ -2,6 +2,7 @@ Bsstrss.Views.EntryShow = Backbone.View.extend({
 	template: JST['entries/show'],
 
 	initialize: function() {
+		$(window).off("scroll");
 		this.listenTo(this.model, 'sync', this.render);
 	},
 

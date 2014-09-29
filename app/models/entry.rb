@@ -8,7 +8,6 @@ class Entry < ActiveRecord::Base
 		if og_entry.images.length == 1
 			image_url = og_entry.images.first
 		else
-			# undefined method `[]' for nil:NilClass
 			p 'here'
 			p fj.summary
 			reg_ex = /img.*src\W+(.*png|.*jpg|.*jpeg|.*gif)/.match(fj.summary)

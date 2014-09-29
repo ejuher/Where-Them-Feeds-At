@@ -4,7 +4,7 @@ module Api
 			if params[:feed_id] 
 				@entries = Feed.find(params[:feed_id]).entries.page params[:page]
 			else
-				@entries = current_user.entries.order(published: :desc).page params[:page] #.limit(50)
+				@entries = current_user.entries.order(published: :desc).page params[:page] 
 			end
 			render 'api/entries/index'
 		end
