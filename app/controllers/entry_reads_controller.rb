@@ -1,10 +1,13 @@
 module Api
 	class EntryReadsController < ApplicationController
 		def create
-			entry_read = EntryRead.new(entry_read_params)
+			entry_read = EntryRead.new({ 
+				user_id: current_user.id, 
+				entry_id: entry_read_params
+			})
 
 			if entry_read.save
-				render :json
+				render json: entry_read
 			else
 				raise 'Error while saving entry_read'
 			end
@@ -19,7 +22,7 @@ module Api
 		private 
 
 		def entry_read_params
-			params.require(:entry_read).require(:user_id, :entry_id)
+			params.require(:entry_read).require(:entry_id)
 		end
 	end
 end

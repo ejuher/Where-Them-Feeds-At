@@ -13,7 +13,7 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 		'keydown #add-feed': 'clearErrors',
 		'submit #add-feed': 'addFeed',
 		'click #menu-toggle': 'toggleMenu',
-		'click button#unsubscribe': 'unsubscribe'
+		'click button#unsubscribe': 'unsubscribe',
 	},
 
 	addEntry: function(entry) {
@@ -63,14 +63,12 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	  // animation to show that its processing
 	  feed.save({}, {
 	    success: function () {
-	    	console.log('save success');
 	    	// turn off processing animation
 	    	Bsstrss.feeds.add(feed) 
 		    var feedShow = new Bsstrss.Views.FeedShow({ model: feed })
 		    Backbone.history.navigate("/feed/" + feed.id, { trigger: true })
 	    },
 	    error: function() {
-	    	console.log('save error');
 	    	var $input = $form.find('input');
 	    	var $div = $form.find('div');
 	    	var $span = $("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");

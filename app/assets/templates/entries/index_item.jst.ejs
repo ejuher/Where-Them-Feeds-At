@@ -4,13 +4,22 @@
 	    <a href="<%= '/#entry/' + entry.id %>"><h3 class="panel-title"><%= entry.escape('title') %></a>
 	  </div>
 		<div class="panel-heading sub-heading">
-			<small><%= entry.escape('feed') %></small>
+			<a href="/#feed/<%= entry.get('feed_id') %>"><small><%= entry.escape('feed') %></small></a>
 	  	<% t = new Date(entry.escape('published')) %>
 			<small class="published"><%= t.toLocaleString() %></small></h3>
 		</div>	  
 	  <div class="panel-body">
 	  	<img src="<%= entry.escape('image') %>">
 	    <p><%= entry.escape('summary') %></p>
+	  </div>
+	  <div class="panel-footer read">
+	  	<form role="form">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" class="read">Mark as Read
+					</label>
+				</div>
+			</form>
 	  </div>
 	</div>			    
 </div>

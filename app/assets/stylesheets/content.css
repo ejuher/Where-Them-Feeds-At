@@ -9,7 +9,7 @@ div.entry-index-item {
 	max-height: 400px;
 	width: 650;
 	overflow: hidden;
-	padding-bottom: 15px;
+	padding-bottom: 0px;
 }
 
 div.entry-index-item img {
@@ -31,4 +31,10 @@ div.sub-heading {
 
 span.form-control-feedback {
 	top: 0px;
+}
+
+div.panel-footer {
+	padding-top: 0px;
+	padding-bottom: 1px;
+	margin-bottom: 0px;
 }

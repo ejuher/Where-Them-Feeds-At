@@ -9,6 +9,10 @@ window.Bsstrss = {
 
     Bsstrss.entries = new Bsstrss.Collections.Entries([], {});
     Bsstrss.entries.fetch();
+
+    Bsstrss.reads = new Bsstrss.Collections.Reads();
+    Bsstrss.reads.fetch();
+    
     var router = new Bsstrss.Routers.BsstrssRouter({
     	$sidebar: $('#sidebar-wrapper'),
     	$content: $('#page-content-wrapper'),
