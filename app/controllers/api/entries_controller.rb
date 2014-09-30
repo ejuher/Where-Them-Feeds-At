@@ -2,7 +2,7 @@ module Api
 	class EntriesController < ApplicationController
 		def index
 			if params[:feed_id] 
-				@entries = Feed.find(params[:feed_id]).entries.includes(:feed).page params[:page]
+				@entries = Feed.find(params[:feed_id]).entries.includes(:feed).order(published: :desc).page params[:page]
 			else
 				@entries = current_user.entries.includes(:feed).order(published: :desc).page params[:page] 
 			end

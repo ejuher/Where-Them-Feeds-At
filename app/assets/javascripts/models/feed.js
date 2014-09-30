@@ -3,7 +3,7 @@ Bsstrss.Models.Feed = Backbone.Model.extend({
 
 	parse: function(jsonResp) {
 		if (jsonResp.entries) {
-			this.entries().set(jsonResp.entries, {parse: true});
+			this.entries().set(jsonResp.entries, { parse: true });
 			delete jsonResp.lists;
 		}
 		return jsonResp;

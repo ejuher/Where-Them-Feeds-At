@@ -23,17 +23,20 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 	toggleRead: function(event) {
 		if (event.currentTarget.checked) {
 			var read = new Bsstrss.Models.Read({ entry_id: this.model.id });
-			read.save({
+			read.save([], {
 				success: function() {
-					Bsstrss.reads.add(read);
-				}
+					console.log('saving read');
+					this.model.set('entry_read_id', read.id)
+					// Bsstrss.reads.add(read);
+				}.bind(this)
 			})
 		} else {
 			var read = new Bsstrss.Models.Read({ id: this.model.get('entry_read_id') });
 			read.destroy({
 				success: function() {
-					Bsstrss.reads.remove(read);
-				}
+					console.log('delete read');
+					// Bsstrss.reads.remove(read);
+				}.bind(this)
 			})
 		}
 	}
