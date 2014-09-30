@@ -1,5 +1,10 @@
 module Api
 	class EntryReadsController < ApplicationController
+		def index
+			@reads = EntryRead.all
+			render json: @reads
+		end
+
 		def create
 			entry_read = EntryRead.new({ 
 				user_id: current_user.id, 
@@ -14,9 +19,14 @@ module Api
 		end
 
 		def destroy
+			# give an entry_read id
+			# on entry index item, 
+			# if the model has been read by current user,
+			# give the model the entry_read_id
+			# else, set the entry_read_id to nil
 			entry_read = EntryRead.find(params[:id])
 			entry_read.delete
-			render :json 
+			render json: entry_read
 		end
 
 		private 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 	  	defaults: { format: :json } do 
 	  		resources :entries, only: [:index]
 	  	end
-	  resources :entry_reads, only: [:create, :destroy]
+	  resources :entry_reads, only: [:index, :create, :destroy]
 	  resources :subscriptions, only: [:destroy]
 	end
   

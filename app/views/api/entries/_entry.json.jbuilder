@@ -1,2 +1,3 @@
 json.(entry, :id, :title, :published, :image, :summary, :url)
-json.read (current_user.read_entries.include?(entry) ? true : false)
+entry_read = current_user.entry_reads.find_by_entry_id(entry.id)
+json.entry_read_id (!!entry_read ? entry_read.id : nil)
