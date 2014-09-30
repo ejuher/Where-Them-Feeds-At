@@ -41,7 +41,7 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
       console.log("scrolled to bottom!");
       self.model.entries().getNextPage();
     }
-	}
+	},
 
 	toggleMenu: function(event) {
 		event.preventDefault();
@@ -99,10 +99,18 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 				location.href = "/welcome"
 			}
 		})
-	}
+	},
 
 	unsubscribe: function(event) {
 		event.preventDefault();
-		
+		var subscription_id = $(event.currentTarget).data('subscription-id');
+		$.ajax({
+			type: 'DELETE',
+			url: '/api/subscriptions/' + subscription_id,
+			dataType: 'json',
+			success: function() {
+				location.href = "/"
+			}
+		})
 	}
 })
