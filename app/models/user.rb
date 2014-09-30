@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
 	has_many :entries, through: :feeds
 
+	has_many :entry_reads
+	has_many :read_entries, through: :entry_reads, source: :entry
+	
+
 	def self.generate_session_token
 		SecureRandom::urlsafe_base64(16)
 	end

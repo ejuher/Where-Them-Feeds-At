@@ -17,7 +17,8 @@ module Api
 
 		def show
 			@page = params[:page]
-			@feed = Feed.find(params[:id])
+			@feed = Feed.includes(:entries, :subscriptions).find(params[:id])
+
 			render "api/feeds/show"
 		end
 

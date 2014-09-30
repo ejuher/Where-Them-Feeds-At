@@ -14,7 +14,11 @@
   	</form>	
 	</div>
 	<div class="col-xs-5">
-		<h4><%= feed.escape('title') %></h4>
+		<% var title = feed.escape('title') %>
+		<h4><%= title %></h4>
+		<% if (title != 'All') { %>
+			<button type="button" id="unsubscribe" class="btn btn-default navbar-btn">Unsubscribe</button>
+		<% } %>
 	</div> 
 	<div class="col-xs-2">
 		<button type="button" id="sign-out" class="btn btn-default navbar-btn">Log Out</button>

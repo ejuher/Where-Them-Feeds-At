@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 	  	defaults: { format: :json } do 
 	  		resources :entries, only: [:index]
 	  	end
+	  resources :entry_reads, only: [:create, :destroy]
+	  resources :subscriptions, only: [:destroy]
 	end
   
 	root to: "static_pages#index"

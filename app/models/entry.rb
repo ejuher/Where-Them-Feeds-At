@@ -1,6 +1,9 @@
 class Entry < ActiveRecord::Base
 	belongs_to :feed
 
+	has_many :entry_reads
+	# has_many :entry_readers
+
 	paginates_per 6
 
 	def self.create_by_fj(fj, id)
@@ -8,8 +11,6 @@ class Entry < ActiveRecord::Base
 		if og_entry.images.length == 1
 			image_url = og_entry.images.first
 		else
-			p 'here'
-			p fj.summary
 			reg_ex = /img.*src\W+(.*png|.*jpg|.*jpeg|.*gif)/.match(fj.summary)
 			(!!reg_ex && reg_ex.length == 2) ? image_url = reg_ex[1] : ''
 		end
