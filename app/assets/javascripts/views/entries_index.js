@@ -4,8 +4,8 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		$(window).off("scroll");
-		this.listenTo(this.collection, 'sync add', this.render);
-		this.listenTo(this.collection, 'sync add', this.addEntry);
+		this.listenTo(this.collection, 'sync', this.render);
+		this.listenTo(this.collection, 'add', this.addEntry);
 		// add subviews
 		this.collection.each(this.addEntry.bind(this));
 	},

@@ -3,7 +3,7 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		$(window).off("scroll");
-		this.listenTo(this.model, 'sync add', this.render);
+		this.listenTo(this.model, 'sync', this.render);
 		this.listenTo(this.model.entries(), 'add', this.addEntry);
 		this.model.entries().each(this.addEntry.bind(this));
 	},

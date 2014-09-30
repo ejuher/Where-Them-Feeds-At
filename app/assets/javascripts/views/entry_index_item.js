@@ -17,14 +17,11 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 		if (!!this.model.get('entry_read_id')) {
 			this.$el.find('input.read').prop('checked', true);
 		}
+		return this;
 	},
 
 	toggleRead: function(event) {
 		if (event.currentTarget.checked) {
-			// create read
-			// create read model
-			// add read model to reads collection
-			// go to create route for read_entry, pass it entry_id
 			var read = new Bsstrss.Models.Read({ entry_id: this.model.id });
 			read.save({
 				success: function() {

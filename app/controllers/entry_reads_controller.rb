@@ -19,11 +19,6 @@ module Api
 		end
 
 		def destroy
-			# give an entry_read id
-			# on entry index item, 
-			# if the model has been read by current user,
-			# give the model the entry_read_id
-			# else, set the entry_read_id to nil
 			entry_read = EntryRead.find(params[:id])
 			entry_read.delete
 			render json: entry_read

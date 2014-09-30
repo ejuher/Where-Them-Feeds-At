@@ -2,7 +2,9 @@ module Api
 	class FeedsController < ApplicationController
 		def index
 			# BUT, later you will want to show more feeds on the explore page
-			render json: current_user.feeds
+			# render json: current_user.feeds
+			@feeds = current_user.feeds
+			render 'api/feeds/index'
 		end
 
 		def create
