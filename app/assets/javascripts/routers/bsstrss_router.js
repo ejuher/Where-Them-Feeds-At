@@ -22,9 +22,11 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 
 	index: function() {
 		Bsstrss.entries.fetch();
-		
-		var EntriesIndexView = new Bsstrss.Views.EntriesIndex({
-			collection: Bsstrss.entries
+		var feed = new Bsstrss.Models.Feed();
+		feed.set('title', 'All'); 
+		feed._entries = Bsstrss.entries;
+		var EntriesIndexView = new Bsstrss.Views.FeedShow({
+			model: feed		
 		});
 		this._swapViews(this.$content, EntriesIndexView);
 	},

@@ -25,7 +25,6 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 			var read = new Bsstrss.Models.Read({ entry_id: this.model.id });
 			read.save([], {
 				success: function() {
-					console.log('saving read');
 					this.model.set('entry_read_id', read.id)
 					// Bsstrss.reads.add(read);
 				}.bind(this)
@@ -34,7 +33,6 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 			var read = new Bsstrss.Models.Read({ id: this.model.get('entry_read_id') });
 			read.destroy({
 				success: function() {
-					console.log('delete read');
 					// Bsstrss.reads.remove(read);
 				}.bind(this)
 			})

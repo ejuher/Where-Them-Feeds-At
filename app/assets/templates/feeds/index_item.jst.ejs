@@ -1,0 +1,8 @@
+<a href="<%= '/#feed/' + feed.id %>">
+  <% var title = feed.escape('title') %>
+  <% if (title.length > 23) { title = title.slice(0,23) + " ..." } %>
+  <% var fav; var url = feed.escape('url');fav = (url[url.length-1] === '/' ? 'favicon.ico' : '/favicon.ico') %>
+	<img class="feed-icon" id="<%= feed.escape('title') %>" src="<%= feed.escape('url') + fav %>"> 
+	<%= title %>
+	<span class="badge"><%= feed.get('num_unread_entries') %></span>
+</a>
