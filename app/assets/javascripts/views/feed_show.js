@@ -16,6 +16,7 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 		'submit #add-feed': 'addFeed',
 		'click #menu-toggle': 'toggleMenu',
 		'click button#unsubscribe': 'unsubscribe',
+		'click button#refresh': 'refresh'
 	},
 
 	addEntry: function(entry) {
@@ -24,9 +25,10 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	render: function() {
+		console.log('RENDERING');
 		var renderContent = this.template({ feed: this.model });
 		this.$el.html(renderContent);
-		this.attachSubviews();
+		this.prependSubviews();
 		this.listenForScroll();
 		return this;
 	},
@@ -113,4 +115,28 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 			}
 		})
 	},
+
+	refresh: function(event) {
+		if (this.model.get('title') === 'All') {
+			// refresh all feeds
+			console.log('refresh all feeds');
+		} else {
+			// refresh individual feed
+			this.model.fetch({ 
+				data: { refresh: true }
+			})
+
+			// $.ajax({
+			// 	type: 'GET',
+			// 	url: 'api/feeds/' + this.model.id,
+			// 	dataType: 'json',
+			// 	data: { refresh: true },
+			// 	success: function() {
+			// 		console.log('refresh success');
+			// 		this.model.fetch();
+			// 	}.bind(this)
+			// })
+		}
+		// this.render();
+	}
 })

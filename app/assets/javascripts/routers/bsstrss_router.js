@@ -33,6 +33,7 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 
 	showFeed: function(id) {
 		var feed = Bsstrss.feeds.getOrFetch(id);
+		
 		var feedShowView = new Bsstrss.Views.FeedShow({ model: feed });
 		this._swapViews(this.$content, feedShowView);
 	},

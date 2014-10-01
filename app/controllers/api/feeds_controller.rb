@@ -20,6 +20,9 @@ module Api
 		def show
 			@page = params[:page]
 			@feed = Feed.includes(:entries, :subscriptions).find(params[:id])
+			if params[:refresh]
+				@feed.get_entries
+			end
 
 			render "api/feeds/show"
 		end
@@ -27,6 +30,7 @@ module Api
 		private
 
 		def feed_params
+			# params.require(:feed).permit(:feed_url, :refresh);
 			params.require(:feed).permit(:feed_url);
 		end
 	end

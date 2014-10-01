@@ -6,7 +6,7 @@
    		<span class="glyphicon glyphicon-chevron-left"></span>
     </a>
 	</div>
-	<div class="col-xs-4 add-feed">
+	<div class="col-xs-3 add-feed">
   	<form id="add-feed">
   		<div class="form-group has-feedback">
   			<input type="text" class="form-control" placeholder="add feed url">
@@ -17,6 +17,9 @@
 		<% var title = feed.escape('title') %>
 		<h4><%= title %></h4>
 	</div> 
+	<div class ="col-xs-1">
+		<button type="button" id="refresh" class="btn btn-default" data-subscription-id="<%= feed.escape('subscription_id') %>">Refresh</button>
+	</div>
 	<div class="col-xs-2">
 		<% if (title != 'All') { %>
 			<button type="button" id="unsubscribe" class="btn btn-default" data-subscription-id="<%= feed.escape('subscription_id') %>">Unsubscribe</button>

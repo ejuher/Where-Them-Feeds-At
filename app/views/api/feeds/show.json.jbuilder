@@ -1,7 +1,7 @@
 json.(@feed, :title, :url, :description)
 json.subscription_id @feed.subscriptions.where(user_id: current_user.id)[0].id
 
-json.entries @feed.entries.order(published: :desc) do |entry|
+json.entries @feed.entries.order(:published) do |entry|
 	json.feed entry.feed.title
 	json.feed_id entry.feed.id
 	json.(entry, :id, :title, :published, :image, :summary)

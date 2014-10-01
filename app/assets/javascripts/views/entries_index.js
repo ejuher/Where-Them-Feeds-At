@@ -1,3 +1,4 @@
+// OBSOLETE
 Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 	template: JST['entries/index'],
 	className: "container-fluid",
@@ -15,6 +16,7 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 		'keydown #add-feed': 'clearErrors',
 		'submit #add-feed': 'addFeed',
 		'click #menu-toggle': 'toggleMenu',
+		'click button#refresh': 'refresh'
 	},
 
 	addEntry: function(entry) {
@@ -102,5 +104,25 @@ Bsstrss.Views.EntriesIndex = Backbone.CompositeView.extend({
 				location.href = "/welcome"
 			}
 		})
+	},
+
+	refresh: function(event) {
+		// make backend get_entries
+		if (this.model.get('title') === 'All') {
+			// refresh all feeds
+			console.log('refresh all feeds');
+		} else {
+			// refresh individual feed
+			$.ajax({
+				type: 'GET',
+				url: '/feeds/' + this.model.get('feed_id'),
+				dataType: 'json',
+				data: { refresh: true },
+				success: function() {
+					this.render();
+				}.bind(this)
+			})
+		}
+		this.render();
 	}
 })
