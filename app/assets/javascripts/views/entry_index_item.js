@@ -26,14 +26,16 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 			read.save([], {
 				success: function() {
 					this.model.set('entry_read_id', read.id)
-					// Bsstrss.reads.add(read);
+					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
+					feed.trigger('read', true);
 				}.bind(this)
 			})
 		} else {
 			var read = new Bsstrss.Models.Read({ id: this.model.get('entry_read_id') });
 			read.destroy({
 				success: function() {
-					// Bsstrss.reads.remove(read);
+					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
+					feed.trigger('read', false);
 				}.bind(this)
 			})
 		}

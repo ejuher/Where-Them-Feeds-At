@@ -4,7 +4,7 @@
 	    <a href="<%= entry.escape('url') %>"><h3 class="panel-title"><%= entry.escape('title') %></h3></a>
 	  </div>
 	  <div class="panel-heading sub-heading">
-			<small><%= entry.escape('feed') %></small>
+			<a href="<%= '/#feed/' + entry.get('feed_id') %>"><small><%= entry.escape('feed') %></small></a>
 	  	<% t = new Date(entry.escape('published')) %>
 			<small class="published"><%= t.toLocaleString() %></small></h3>
 		</div>	

@@ -13,5 +13,5 @@ Bsstrss.Models.Feed = Backbone.Model.extend({
 		this._entries = this._entries || 
 			new Bsstrss.Collections.Entries([], { feed: this });
 		return this._entries;
-	}
+	},
 })

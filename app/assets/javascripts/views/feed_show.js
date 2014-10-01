@@ -3,6 +3,8 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		$(window).off("scroll");
+		feed = this.model;
+
 		this.listenTo(this.model, 'sync', this.render);
 		this.listenTo(this.model.entries(), 'add', this.addEntry);
 		this.model.entries().each(this.addEntry.bind(this));
@@ -110,5 +112,5 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 				location.href = "/"
 			}
 		})
-	}
+	},
 })
