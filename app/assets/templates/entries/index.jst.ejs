@@ -19,11 +19,11 @@
 	</div> 
 	<div class="col-xs-2">
 		<% if (title != 'All') { %>
-			<button type="button" id="unsubscribe" class="btn btn-default navbar-btn" data-subscription-id="<%= feed.escape('subscription_id') %>">Unsubscribe</button>
+			<button type="button" id="unsubscribe" class="btn btn-default" data-subscription-id="<%= feed.escape('subscription_id') %>">Unsubscribe</button>
 		<% } %>
 	</div>
 	<div class="col-xs-2">
-		<button type="button" id="sign-out" class="btn btn-default navbar-btn">Log Out</button>
+		<button type="button" id="sign-out" class="btn btn-default">Log Out</button>
 	</div>
 </div>
 

@@ -2,7 +2,6 @@ div.header {
 	border-bottom: grey 2px solid;
 	margin-top: -8px;
 	margin-bottom: 15px;
-	padding-bottom: 11px;
 }
 
 div.entry-index-item {
@@ -31,6 +30,10 @@ div.sub-heading {
 
 span.form-control-feedback {
 	top: 0px;
+}
+
+div.panel-body {
+	overflow-x: scroll;
 }
 
 div.panel-footer {
