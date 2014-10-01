@@ -1,5 +1,5 @@
 Bsstrss.Views.FeedIndexItem = Backbone.View.extend({
-	template: JST['feed/index_item'],
+	template: JST['feeds/index_item'],
 	tagName: 'li',
 
 	render: function() {

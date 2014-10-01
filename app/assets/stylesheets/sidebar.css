@@ -2,3 +2,7 @@ img.feed-icon {
 	height: 18px;
 	width: 18px;
 }
+
+span.badge {
+	display: inline;
+}

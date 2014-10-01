@@ -3,22 +3,5 @@
         WTF @
     </a>
 </li>
-<% feeds.each(function(feed) { %>
-  <li>
-    <a href="<%= '/#feed/' + feed.id %>">
-      <% var title = feed.escape('title') %>
-      <% if (title.length > 23) { title = title.slice(0,23) + " ..." } %>
-      <% var fav; var url = feed.escape('url');fav = (url[url.length-1] === '/' ? 'favicon.ico' : '/favicon.ico') %>
-    	<img class="feed-icon" id="<%= feed.escape('title') %>" src="<%= feed.escape('url') + fav %>"> 
-    	<%= title %>
-    </a>
-  </li>
-<% }) %>
-
-<script>
-  $(document).ready(function(){
-    $('img.feed-icon').error(function(){
-      $(this).attr('src', 'http://www.pandasecurity.com/NR/rdonlyres/8C19BC46-887E-4BF1-B118-D3E1BA92573F/0/ico_rss.gif')
-    })
-  })
-</script>
+<div id="feeds">
+</div>
