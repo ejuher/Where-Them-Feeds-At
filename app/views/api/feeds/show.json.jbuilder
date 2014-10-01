@@ -1,4 +1,6 @@
 json.(@feed, :title, :url, :description)
+json.read_entries current_user.read_entries.where(feed_id: @feed.id).count
+json.num_entries @feed.entries.count
 json.subscription_id @feed.subscriptions.where(user_id: current_user.id)[0].id
 
 json.entries @feed.entries.order(:published) do |entry|

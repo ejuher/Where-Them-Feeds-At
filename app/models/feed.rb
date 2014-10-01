@@ -31,7 +31,6 @@ class Feed < ActiveRecord::Base
 	end
 
 	def get_entries
-		puts("********************** GETTING ENTRIES *************************");
 		fj_feed = Feedjira::Feed.fetch_and_parse(self.feed_url)
 		existing_entry_urls = self.entries.pluck(:url)
 		if fj_feed == 0 

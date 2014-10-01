@@ -25,7 +25,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	render: function() {
-		console.log('RENDERING');
 		var renderContent = this.template({ feed: this.model });
 		this.$el.html(renderContent);
 		this.prependSubviews();
@@ -125,18 +124,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 			this.model.fetch({ 
 				data: { refresh: true }
 			})
-
-			// $.ajax({
-			// 	type: 'GET',
-			// 	url: 'api/feeds/' + this.model.id,
-			// 	dataType: 'json',
-			// 	data: { refresh: true },
-			// 	success: function() {
-			// 		console.log('refresh success');
-			// 		this.model.fetch();
-			// 	}.bind(this)
-			// })
 		}
-		// this.render();
 	}
 })

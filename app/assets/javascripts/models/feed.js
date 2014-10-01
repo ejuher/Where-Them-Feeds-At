@@ -2,12 +2,10 @@ Bsstrss.Models.Feed = Backbone.Model.extend({
 	urlRoot: '/api/feeds',
 
 	parse: function(jsonResp) {
-		debugger
 		if (jsonResp.entries) {
 			this.addNewEntries(jsonResp.entries);
 			// this.entries().set(jsonResp.entries, { parse: true });
 			delete jsonResp.lists;
-			debugger
 		}
 		return jsonResp;
 	},
