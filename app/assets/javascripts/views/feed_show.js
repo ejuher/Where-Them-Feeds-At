@@ -26,6 +26,7 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	// },
 
 	unShiftEntry: function (entry) {
+		console.log('unshifting entry');
 		var included = false;
     this.subviews()["div#entries"].forEach(function(subview) {
     	if(subview.model.id === entry.id) {
@@ -151,17 +152,36 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	refresh: function(event) {
-		//the dummy ALL feed has no ID
-		// this.firstRender = false;
-		console.log('refreshing; this.firstRender = ' + this.firstRender);
+		//the dummy ALL feed
 		if (this.model.isNew()) {
+			var oldEntries = this.model.entries();
 			this.model.entries().fetch({
 				data: {refresh: true},
+				silent: true,
+				// success: function() {
+				// 	console.log('RERESHING ALL');
+				// 	var feed = this.model;
+				// 	var ids = oldEntries.pluck('id');
+				// 	respEntries = arguments[1];
+				// 	debugger
+				// 	respEntries.forEach(function(respEntry) {
+				// 		if ((_.contains(ids, respEntry.id)) != true) {
+				// 			var newEntry = new Bsstrss.Models.Entry(respEntry);
+			 //        // if(options.silent) {
+			 //        	feed.entries().unshift(newEntry, { silent: true });
+			 //        	feed.entries().trigger("refreshAdd", newEntry);
+			 //        	console.log('triggered refreshAdd');
+			 //    //     } else {
+				// 			// 	feed.entries().add(newEntry);
+				// 			// }
+				// 	}
+				// })
+				// }.bind(this)
+				success: function() {
+					console.log('refresh success');
+					Backbone.history.loadUrl();
+				}
 			});
-			// this.model.entries().sortBy('published');
-			// this.model._entries = Bsstrss.entries.sortBy('published');
-			// Backbone.history.navigate("/");
-			// this.render();
 		} else {
 			this.model.fetch({ 
 				data: { refresh: true }, 
