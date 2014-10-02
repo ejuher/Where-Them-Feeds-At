@@ -1,9 +1,9 @@
 Bsstrss.Models.Feed = Backbone.Model.extend({
 	urlRoot: '/api/feeds',
 
-	parse: function(jsonResp) {
+	parse: function(jsonResp, options) {
 		if (jsonResp.entries) {
-			this.addNewEntries(jsonResp.entries);
+			this.addNewEntries(jsonResp.entries, options);
 			// this.entries().set(jsonResp.entries, { parse: true });
 			delete jsonResp.lists;
 		}
@@ -16,14 +16,18 @@ Bsstrss.Models.Feed = Backbone.Model.extend({
 		return this._entries;
 	},
 
-	addNewEntries: function(respEntries) {
+	addNewEntries: function(respEntries, options) {
 		var feed = this;
 		var ids = this.entries().pluck('id');
 		respEntries.forEach(function(respEntry) {
-
 			if ((_.contains(ids, respEntry.id)) != true) {
 				var newEntry = new Bsstrss.Models.Entry(respEntry);
-				feed.entries().add(newEntry);
+        if(options.silent) {
+        	feed.entries().unshift(newEntry, { silent: true });
+        	feed.entries().trigger("refreshAdd", newEntry);
+        } else {
+					feed.entries().add(newEntry);
+				}
 			}
 		})
 	}

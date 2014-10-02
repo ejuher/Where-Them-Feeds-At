@@ -36,7 +36,8 @@ class Feed < ActiveRecord::Base
 		if fj_feed == 0 
 			puts "dead url: #{self.feed_url}"
 		else
-			fj_feed.entries.each do |entry|
+			# fj_feed.entries.each do |entry|
+			fj_feed.entries.reverse.each do |entry|
 				unless existing_entry_urls.include?(entry.url)
 					Entry.create_by_fj(entry, self.id)
 				end

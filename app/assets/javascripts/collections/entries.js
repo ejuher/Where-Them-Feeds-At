@@ -5,6 +5,10 @@ Bsstrss.Collections.Entries = Backbone.Collection.extend({
 
 	model: Bsstrss.Models.Entry,
 
+	comparator: function(entry) {
+		return entry.get("id");
+	},
+
 	initialize: function(models, options) {
 		this.feed = options.feed;
 		this.page = 1;

@@ -21,8 +21,11 @@ module Api
 			@feed = Feed.includes(:entries, :subscriptions).find(params[:id])
 			if params[:refresh]
 				@feed.get_entries
+				@entries = @feed.entries.order(published: :desc).page params[:page]
+				@entries = @entries.to_a.reverse
+			else
+				@entries = @feed.entries.order(published: :desc).page params[:page] 
 			end
-			@entries = @feed.entries.order(published: :desc).page params[:page]
 			render "api/feeds/show"
 		end
 

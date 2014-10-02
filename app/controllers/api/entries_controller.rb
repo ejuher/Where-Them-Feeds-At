@@ -11,7 +11,6 @@ module Api
 		end
 
 		def show
-			
 			@entry = Entry.find(params[:id])
 			render 'api/entries/show'
 		end

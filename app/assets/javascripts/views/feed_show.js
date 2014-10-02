@@ -3,11 +3,13 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		$(window).off("scroll");
-		feed = this.model;
+		// feed = this.model;
+		this.firstRender = true;
 
 		this.listenTo(this.model, 'sync', this.render);
 		this.listenTo(this.model.entries(), 'add', this.addEntry);
 		this.model.entries().each(this.addEntry.bind(this));
+		this.listenTo(this.model.entries(), 'refreshAdd', this.unShiftEntry);
 	},
 
 	events: {
@@ -19,15 +21,47 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 		'click button#refresh': 'refresh'
 	},
 
+	// unShiftModelEntries: function (feed) {
+	// 	feed.entries().each(this.unShiftEntry.bind(this));
+	// },
+
+	unShiftEntry: function (entry) {
+		var included = false;
+    this.subviews()["div#entries"].forEach(function(subview) {
+    	if(subview.model.id === entry.id) {
+        included = true;
+    	}
+    });
+    console.log(included);
+    if(!included) {
+      var newEntry = new Bsstrss.Views.EntryIndexItem({ model: entry });
+		  this.unshiftSubview("div#entries", newEntry);
+    }
+	},
+
 	addEntry: function(entry) {
 		var newEntry = new Bsstrss.Views.EntryIndexItem({ model: entry });
-		this.addSubview("div#entries", newEntry);
+		// if (this.firstRender) {
+			console.log('pushingSubview');
+			this.addSubview("div#entries", newEntry);	
+		// } else {
+		// 	console.log('shiftingSubview');
+		// 	this.shiftSubview("div#entries", newEntry);
+		// }
 	},
 
 	render: function() {
+		console.log('rendering');
 		var renderContent = this.template({ feed: this.model });
 		this.$el.html(renderContent);
-		this.prependSubviews();
+		// if (this.firstRender) {
+		// 	console.log('appending subviews')
+			this.attachSubviews();
+		// } else {
+		// 	console.log('prepending subviews')
+		// 	this.prependSubviews();		
+		// 	this.firstRender = true;
+		// }
 		this.listenForScroll();
 		return this;
 	},
@@ -42,6 +76,7 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 		var self = this;
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
       console.log("scrolled to bottom!");
+      // this.firstRender = false;
       self.model.entries().getNextPage();
     }
 	},
@@ -117,15 +152,20 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	refresh: function(event) {
 		//the dummy ALL feed has no ID
+		// this.firstRender = false;
+		console.log('refreshing; this.firstRender = ' + this.firstRender);
 		if (this.model.isNew()) {
-			this.model.entries().fetch({data: {refresh: true}});
+			this.model.entries().fetch({
+				data: {refresh: true},
+			});
 			// this.model.entries().sortBy('published');
 			// this.model._entries = Bsstrss.entries.sortBy('published');
 			// Backbone.history.navigate("/");
 			// this.render();
 		} else {
 			this.model.fetch({ 
-				data: { refresh: true }
+				data: { refresh: true }, 
+				silent: true
 			});
 		}
 	}
