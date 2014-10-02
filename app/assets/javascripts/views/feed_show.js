@@ -116,14 +116,17 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	refresh: function(event) {
-		if (this.model.get('title') === 'All') {
-			// refresh all feeds
-			console.log('refresh all feeds');
+		//the dummy ALL feed has no ID
+		if (this.model.isNew()) {
+			this.model.entries().fetch({data: {refresh: true}});
+			// this.model.entries().sortBy('published');
+			// this.model._entries = Bsstrss.entries.sortBy('published');
+			// Backbone.history.navigate("/");
+			// this.render();
 		} else {
-			// refresh individual feed
 			this.model.fetch({ 
 				data: { refresh: true }
-			})
+			});
 		}
 	}
 })
