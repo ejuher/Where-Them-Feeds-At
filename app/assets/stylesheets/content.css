@@ -11,6 +11,10 @@ div.entry-index-item {
 	padding-bottom: 0px;
 }
 
+div.overlay {
+	background-color: rgba(255, 255, 255, 0.75);
+}
+
 div.entry-index-item img {
 	max-height: 200px;
 	float: left;
@@ -34,6 +38,13 @@ span.form-control-feedback {
 
 div.panel-body {
 	overflow-x: scroll;
+	transition-property: visibility;
+	transition-duration: 1s;
+}
+
+.hidden {
+	transition-property: visibility;
+	transition-duration: 1s;
 }
 
 div.panel-footer {

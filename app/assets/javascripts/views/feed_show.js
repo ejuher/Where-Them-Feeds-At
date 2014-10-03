@@ -4,7 +4,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		$(window).off("scroll");
-		// feed = this.model;
 		this.firstRender = true;
 
 		this.listenTo(this.model, 'sync', this.render);
@@ -82,10 +81,8 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	  var url = $form.find('input').val();
 	  $form.find('input').val('');
 	  var feed = new Bsstrss.Models.Feed({ feed_url: url });
-	  // animation to show that its processing
 	  feed.save({}, {
 	    success: function () {
-	    	// turn off processing animation
 	    	Bsstrss.feeds.add(feed) 
 		    var feedShow = new Bsstrss.Views.FeedShow({ model: feed })
 		    Backbone.history.navigate("/feed/" + feed.id, { trigger: true })
@@ -95,7 +92,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	    	var $div = $form.find('div');
 	    	var $span = $("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
 
-	    	// turn off processing animation
 	    	$input.attr('placeholder', 'Invalid URL');
 	    	$div.addClass('has-error');
 	    	$div.append($span);
@@ -142,25 +138,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 			this.model.entries().fetch({
 				data: {refresh: true},
 				silent: true,
-				// success: function() {
-				// 	console.log('RERESHING ALL');
-				// 	var feed = this.model;
-				// 	var ids = oldEntries.pluck('id');
-				// 	respEntries = arguments[1];
-				// 	debugger
-				// 	respEntries.forEach(function(respEntry) {
-				// 		if ((_.contains(ids, respEntry.id)) != true) {
-				// 			var newEntry = new Bsstrss.Models.Entry(respEntry);
-			 //        // if(options.silent) {
-			 //        	feed.entries().unshift(newEntry, { silent: true });
-			 //        	feed.entries().trigger("refreshAdd", newEntry);
-			 //        	console.log('triggered refreshAdd');
-			 //    //     } else {
-				// 			// 	feed.entries().add(newEntry);
-				// 			// }
-				// 	}
-				// })
-				// }.bind(this)
 				success: function() {
 					console.log('refresh success');
 					Backbone.history.loadUrl();
