@@ -18,10 +18,12 @@
 		<h4><%= title %></h4>
 	</div> 
 	<div class ="col-xs-1">
-		<button type="button" id="refresh" class="btn btn-default" data-subscription-id="<%= feed.escape('subscription_id') %>">Refresh</button>
+		<% if (!feed.isNew() || title === 'All') { %>
+			<button type="button" id="refresh" class="btn btn-default" data-subscription-id="<%= feed.escape('subscription_id') %>">Refresh</button>
+		<% } %>
 	</div>
 	<div class="col-xs-2">
-		<% if (title != 'All') { %>
+		<% if (!feed.isNew()) { %>
 			<button type="button" id="unsubscribe" class="btn btn-default" data-subscription-id="<%= feed.escape('subscription_id') %>">Unsubscribe</button>
 		<% } %>
 	</div>
