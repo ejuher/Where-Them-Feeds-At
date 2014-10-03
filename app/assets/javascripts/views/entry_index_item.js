@@ -7,7 +7,8 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 	},
 
 	events: {
-		'click input.read': 'toggleRead'
+		'click input.read': 'toggleRead',
+		'click a.entry-title': 'read'
 	},
 
 	render: function() {
@@ -40,6 +41,19 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 					this.$el.find('.panel-body').fadeIn();
 					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
 					feed.trigger('read', false);
+				}.bind(this)
+			})
+		}
+	},
+
+	read: function (event) {
+		if (!this.model.get('entry_read_id')) {
+			var read = new Bsstrss.Models.Read({ entry_id: this.model.id });
+			read.save([], {
+				success: function() {
+					this.model.set('entry_read_id', read.id);
+					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
+					feed.trigger('read', true);
 				}.bind(this)
 			})
 		}

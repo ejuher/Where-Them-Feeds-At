@@ -4,8 +4,9 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		$(window).off("scroll");
-		this.firstRender = true;
+		// this.firstRender = true;
 
+		if (this.model.entry) { this.addEntryShow(this.model.entry); } //bind?
 		this.listenTo(this.model, 'sync', this.render);
 		this.listenTo(this.model.entries(), 'add', this.addEntry);
 		this.model.entries().each(this.addEntry.bind(this));
@@ -18,8 +19,27 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 		'submit #add-feed': 'addFeed',
 		'click #menu-toggle': 'toggleMenu',
 		'click button#unsubscribe': 'unsubscribe',
-		'click button#refresh': 'refresh'
+		'click button#refresh': 'refresh',
+		// 'click a.entry-title': 'readEntry'
 	},
+
+	// readEntry: function(event) {
+	// 	event.preventDefault();
+	// 	var id = $(event.currentTarget).attr('href');
+	// 	var entry = this.model.entries().get(id);
+	// 	var entryView = new Bsstrss.Views.EntryShow({ model: entry });
+
+	// 	var read = new Bsstrss.Models.Read({ entry_id: id });
+	// 	read.save([], {
+	// 		success: function() {
+	// 			this.model.set('entry_read_id', read.id);
+	// 			var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
+	// 			feed.trigger('read', true);
+	// 		}.bind(this)
+	// 	})
+
+	// 	this.$el.find("#div#entries").html(entryView.render().$el);
+	// },
 
 	unShiftEntry: function (entry) {
 		console.log('unshifting entry');
@@ -39,6 +59,11 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	addEntry: function(entry) {
 		var newEntry = new Bsstrss.Views.EntryIndexItem({ model: entry });
 		this.addSubview("div#entries", newEntry);	
+	},
+
+	addEntryShow: function(entry) {
+		var entryShow = new Bsstrss.Views.EntryShow({ model: entry });
+		this.addSubview("div#entries", entryShow);
 	},
 
 	render: function() {

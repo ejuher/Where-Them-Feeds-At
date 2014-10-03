@@ -33,15 +33,22 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 
 	showFeed: function(id) {
 		var feed = window.feed = Bsstrss.feeds.getOrFetch(id);
-		
 		var feedShowView = new Bsstrss.Views.FeedShow({ model: feed });
 		this._swapViews(this.$content, feedShowView);
 	},
 
 	showEntry: function(id) {
+		// debugger
 		var entry = Bsstrss.entries.getOrFetch(id);
-		var entryShowView = new Bsstrss.Views.EntryShow({ model: entry });
-		this._swapViews(this.$content, entryShowView);
+		// var entryShowView = new Bsstrss.Views.EntryShow({ model: entry });
+		var feed = new Bsstrss.Models.Feed();
+		feed.set('title', entry.get('feed')); 
+		feed.entry = entry;
+		// feed._entries = [entry];
+		var feedShowView = new Bsstrss.Views.FeedShow({
+			model: feed		
+		});
+		this._swapViews(this.$content, feedShowView);
 	},
 
 	_swapViews: function($target, view) {
