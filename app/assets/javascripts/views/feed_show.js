@@ -45,6 +45,7 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	render: function() {
 		var renderContent = this.template({ feed: this.model });
 		this.$el.html(renderContent);
+		// this.sortEntries();
 		this.attachSubviews();
 		this.listenForScroll();
 		return this;

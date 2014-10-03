@@ -1,4 +1,10 @@
 Backbone.CompositeView = Backbone.View.extend({
+  // sortEntries: function () {
+  //   this.subviews('div#entries').sort(function (a, b) {
+  //     return a.model.get('published') - b.model.get('published');
+  //   });
+  // },
+
   addSubview: function (selector, subview) {
     this.subviews(selector).push(subview);
     // Try to attach the subview. Render it as a convenience.
