@@ -21,10 +21,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 		'click button#refresh': 'refresh'
 	},
 
-	// unShiftModelEntries: function (feed) {
-	// 	feed.entries().each(this.unShiftEntry.bind(this));
-	// },
-
 	unShiftEntry: function (entry) {
 		console.log('unshifting entry');
 		var included = false;
@@ -42,27 +38,13 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	addEntry: function(entry) {
 		var newEntry = new Bsstrss.Views.EntryIndexItem({ model: entry });
-		// if (this.firstRender) {
-			console.log('pushingSubview');
-			this.addSubview("div#entries", newEntry);	
-		// } else {
-		// 	console.log('shiftingSubview');
-		// 	this.shiftSubview("div#entries", newEntry);
-		// }
+		this.addSubview("div#entries", newEntry);	
 	},
 
 	render: function() {
-		console.log('rendering');
 		var renderContent = this.template({ feed: this.model });
 		this.$el.html(renderContent);
-		// if (this.firstRender) {
-		// 	console.log('appending subviews')
-			this.attachSubviews();
-		// } else {
-		// 	console.log('prepending subviews')
-		// 	this.prependSubviews();		
-		// 	this.firstRender = true;
-		// }
+		this.attachSubviews();
 		this.listenForScroll();
 		return this;
 	},
@@ -76,8 +58,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	nextPage: function() {
 		var self = this;
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
-      console.log("scrolled to bottom!");
-      // this.firstRender = false;
       self.model.entries().getNextPage();
     }
 	},
@@ -153,6 +133,10 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	refresh: function(event) {
 		//the dummy ALL feed
+		// this.$el.spin("large");
+		// var $spinner = $("<div class='row'><div class='col-md-4 col-md-offset-4'><img class='spinner' src='http://www.securenet.com/sites/default/files/spinner.gif'></div></div>");
+		var $spinner = $("<div class='spinner'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div>");
+		this.$el.find('div#entries').html($spinner);
 		if (this.model.isNew()) {
 			var oldEntries = this.model.entries();
 			this.model.entries().fetch({

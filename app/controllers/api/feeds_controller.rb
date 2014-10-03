@@ -18,7 +18,7 @@ module Api
 
 		def show
 			@page = params[:page]
-			@feed = Feed.includes(:entries, :subscriptions).find(params[:id])
+			@feed = Feed.find(params[:id])
 			if params[:refresh]
 				@feed.get_entries
 				@entries = @feed.entries.order(published: :desc).page params[:page]
