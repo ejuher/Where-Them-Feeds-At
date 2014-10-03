@@ -1,0 +1,11 @@
+<div id="inTurnFadingTextG">
+<% for (var i = 0; i < msg.length; i ++) { %>
+	<% if (msg[i] === ' ') { %>
+		&nbsp;
+	<% } else { %>
+		<div id="inTurnFadingTextG_<%= i + 1 %>" class="inTurnFadingTextG">
+			<%= msg[i] %>
+		</div>
+	<% } %>
+<% } %>
+</div>

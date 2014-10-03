@@ -1,6 +1,7 @@
 Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	template: JST['entries/index'],
 	loadingAnimation: JST['loading_animation'],
+	customLoadingAnimation: JST['custom_loading_animation'],
 
 	initialize: function() {
 		$(window).off("scroll");
@@ -86,8 +87,25 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	addFeed: function(event) {
+		var messages = [
+			'Gotta get me them feeds',
+			'The feed hunt is on',
+			'This feed must be found',
+			'Who hid these feeds?',
+			'I am a relentless feed finder of the highest caliber',
+			'Them feeds: where they at?',
+			'I feel the need, to find some feed',
+			"Hello, are you the feed I'm looking for?"
+		];
+
 		event.preventDefault();
 		this.$el.find('div#entries').html(this.loadingAnimation());
+		var addMessage = function() {
+			var msg = messages[Math.floor((Math.random() * messages.length))];
+			var renderContent = this.customLoadingAnimation({ msg: msg });
+			this.$el.find('div#entries').append(this.loadingAnimation)
+		}
+		setInterval(addMessage, 3000);
 	  var $form = $(event.currentTarget);
 	  var url = $form.find('input').val();
 	  $form.find('input').val('');
@@ -106,6 +124,7 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	    	$input.attr('placeholder', 'Invalid URL');
 	    	$div.addClass('has-error');
 	    	$div.append($span);
+	    	location.href = "/"
 	    }
 	  });
 	},
