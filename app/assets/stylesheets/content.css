@@ -1,21 +1,21 @@
-div.header {
+.header {
 	border-bottom: grey 2px solid;
 	margin-top: -8px;
 	margin-bottom: 15px;
 }
 
-div.entry-index-item {
+.entry-index-item {
 	max-height: 400px;
 	width: 650;
 	overflow: hidden;
 	padding-bottom: 0px;
 }
 
-div.overlay {
+.overlay {
 	background-color: rgba(255, 255, 255, 0.75);
 }
 
-div.entry-index-item img {
+.entry-index-item img {
 	max-height: 200px;
 	float: left;
 	margin-right: 30px;
@@ -27,7 +27,7 @@ small.published {
 	float: right;
 }
 
-div.sub-heading {
+.sub-heading {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
@@ -36,7 +36,7 @@ span.form-control-feedback {
 	top: 0px;
 }
 
-div.panel-body {
+.panel-body {
 	overflow-x: scroll;
 /*	transition: visibility, 1s, ease;
 	transition: display, 1s, ease;*/
@@ -47,7 +47,7 @@ div.panel-body {
 	transition: display, 1s, ease;*/
 }
 
-div.panel-footer {
+.panel-footer {
 	padding-top: 0px;
 	padding-bottom: 1px;
 	margin-bottom: 0px;

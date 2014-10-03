@@ -18,3 +18,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.animation.my-custom-styles {
+	margin-top: 50px;
+	position:absolute;
+	top:50%;
+	left: 50%;
+	transform:translateY(-50%) translateX(-50%);
+}
+
+#entries {
+	position:relative;
+}

@@ -99,24 +99,30 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 		];
 
 		event.preventDefault();
-		this.$el.find('div#entries').html(this.loadingAnimation());
+		// this.$el.find('div#entries').html(this.loadingAnimation());
+		this.$el.find('div#entries').html(this.customLoadingAnimation({ 
+			msg: 'Where them feeds at???'
+		}))
 		var addMessage = function() {
 			var msg = messages[Math.floor((Math.random() * messages.length))];
 			var renderContent = this.customLoadingAnimation({ msg: msg });
-			this.$el.find('div#entries').append(this.loadingAnimation)
+			this.$el.find('div#entries').html(renderContent);
+			console.log('rendering message');
 		}
-		setInterval(addMessage, 3000);
+		var intervalId = setInterval(addMessage.bind(this), 6000);
 	  var $form = $(event.currentTarget);
 	  var url = $form.find('input').val();
 	  $form.find('input').val('');
 	  var feed = new Bsstrss.Models.Feed({ feed_url: url });
 	  feed.save({}, {
 	    success: function () {
+	    	clearInterval(intervalId);
 	    	Bsstrss.feeds.add(feed) 
 		    var feedShow = new Bsstrss.Views.FeedShow({ model: feed })
 		    Backbone.history.navigate("/feed/" + feed.id, { trigger: true })
 	    },
 	    error: function() {
+	    	clearInterval(intervalId);
 	    	var $input = $form.find('input');
 	    	var $div = $form.find('div');
 	    	var $span = $("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
