@@ -1,5 +1,6 @@
 Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	template: JST['entries/index'],
+	loadingAnimation: JST['loading_animation'],
 
 	initialize: function() {
 		$(window).off("scroll");
@@ -75,6 +76,7 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	addFeed: function(event) {
 		event.preventDefault();
+		this.$el.find('div#entries').html(this.loadingAnimation());
 	  var $form = $(event.currentTarget);
 	  var url = $form.find('input').val();
 	  $form.find('input').val('');
@@ -132,11 +134,8 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	refresh: function(event) {
+		this.$el.find('div#entries').html(this.loadingAnimation());
 		//the dummy ALL feed
-		// this.$el.spin("large");
-		// var $spinner = $("<div class='row'><div class='col-md-4 col-md-offset-4'><img class='spinner' src='http://www.securenet.com/sites/default/files/spinner.gif'></div></div>");
-		var $spinner = $("<div class='spinner'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div>");
-		this.$el.find('div#entries').html($spinner);
 		if (this.model.isNew()) {
 			var oldEntries = this.model.entries();
 			this.model.entries().fetch({
