@@ -25,9 +25,7 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 		var feed = new Bsstrss.Models.Feed();
 		feed.set('title', 'All'); 
 		feed._entries = Bsstrss.entries;
-		var EntriesIndexView = new Bsstrss.Views.FeedShow({
-			model: feed		
-		});
+		var EntriesIndexView = new Bsstrss.Views.FeedShow({ model: feed });
 		this._swapViews(this.$content, EntriesIndexView);
 	},
 
@@ -38,16 +36,11 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 	},
 
 	showEntry: function(id) {
-		// debugger
 		var entry = Bsstrss.entries.getOrFetch(id);
-		// var entryShowView = new Bsstrss.Views.EntryShow({ model: entry });
 		var feed = new Bsstrss.Models.Feed();
 		feed.set('title', entry.get('feed')); 
 		feed.entry = entry;
-		// feed._entries = [entry];
-		var feedShowView = new Bsstrss.Views.FeedShow({
-			model: feed		
-		});
+		var feedShowView = new Bsstrss.Views.FeedShow({ model: feed	});
 		this._swapViews(this.$content, feedShowView);
 	},
 

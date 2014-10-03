@@ -24,6 +24,7 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 
 	toggleRead: function(event) {
 		if (event.currentTarget.checked) {
+			// checking
 			var read = new Bsstrss.Models.Read({ entry_id: this.model.id });
 			read.save([], {
 				success: function() {
@@ -34,9 +35,11 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 				}.bind(this)
 			})
 		} else {
+			// unchecking
 			var read = new Bsstrss.Models.Read({ id: this.model.get('entry_read_id') });
 			read.destroy({
 				success: function() {
+					this.$el.find('.panel-body').hide();
 					this.$el.find('.panel-body').removeClass('hidden');
 					this.$el.find('.panel-body').fadeIn();
 					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));

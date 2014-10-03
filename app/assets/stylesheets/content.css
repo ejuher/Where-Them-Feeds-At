@@ -38,13 +38,13 @@ span.form-control-feedback {
 
 div.panel-body {
 	overflow-x: scroll;
-	transition-property: visibility;
-	transition-duration: 1s;
+/*	transition: visibility, 1s, ease;
+	transition: display, 1s, ease;*/
 }
 
 .hidden {
-	transition-property: visibility;
-	transition-duration: 1s;
+/*	transition: visibility, 1s, ease;
+	transition: display, 1s, ease;*/
 }
 
 div.panel-footer {
