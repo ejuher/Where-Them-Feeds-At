@@ -6,7 +6,6 @@
 
 .entry-index-item {
 	max-height: 400px;
-	width: 650;
 	overflow: hidden;
 	padding-bottom: 0px;
 }
@@ -37,14 +36,7 @@ span.form-control-feedback {
 }
 
 .panel-body {
-	overflow-x: scroll;
-/*	transition: visibility, 1s, ease;
-	transition: display, 1s, ease;*/
-}
-
-.hidden {
-/*	transition: visibility, 1s, ease;
-	transition: display, 1s, ease;*/
+	overflow: hidden;
 }
 
 .entry-footer {
