@@ -19,7 +19,18 @@
 						<h1 class="shadow">Where Them Feeds At?</h1>
 					</div>
 				</div class="row">
-				<div class="row">
+				<% unless flash[:errors].nil? %>
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1">
+							<ul id="errors">
+								<% flash[:errors].each do |error| %>
+									<li><%= error %></li>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+				<% end %>
+			<div class="row">
 
 					<div class="col-xs-5  col-xs-offset-1 col-left">
 						<h2>Log In</h2>
@@ -36,9 +47,7 @@
 						<%= render "shared/login", use: 'signup' %>
 					</div>
 				</div>
-
 			</div><!-- //main content -->
 		</div><!-- //row -->
 	</div> <!-- //container -->
 </div>
-

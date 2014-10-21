@@ -1,14 +1,6 @@
 <% url = session_url if use == 'login' %>
 <% url = users_url if use == 'signup' %>
 
-<% unless flash[:errors].nil? %>
-	<ul>
-		<% flash[:errors].each do |error| %>
-			<li><%= error %></li>
-		<% end %>
-	</ul>
-<% end %>
-
 <form action="<%= url %>" method="POST" role="form">
 <input name="authenticity_token" 
 		   type="hidden" 
