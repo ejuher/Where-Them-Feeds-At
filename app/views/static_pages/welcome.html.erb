@@ -30,7 +30,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-5 col-xs-offset-1 col-left">
-							<%= render "shared/login", use: 'login' %>
+						<%= render "shared/login", use: 'login' %>
 					</div>
 					<div class="col-xs-5 col-right">
 						<%= render "shared/login", use: 'signup' %>
@@ -41,3 +41,9 @@
 		</div><!-- //row -->
 	</div> <!-- //container -->
 </div>
+
+<script>
+	$(document).ready(function(){
+		$(window).off("scroll");
+	});
+</script>
