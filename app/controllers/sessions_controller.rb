@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
 		)
 
 		if @user.nil?
+			flash[:errors] = ["Your email or password were incorrect"]
 			redirect_to welcome_url
 		else
 			login!(@user)
