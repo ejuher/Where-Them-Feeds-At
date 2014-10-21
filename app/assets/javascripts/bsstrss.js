@@ -22,6 +22,4 @@ window.Bsstrss = {
   }
 };
 
-$(document).ready(function(){
-  Bsstrss.initialize();
-});
+
