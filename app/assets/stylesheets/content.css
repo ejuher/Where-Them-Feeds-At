@@ -1,3 +1,11 @@
+div.checkbox {
+	display: inline-block;
+}
+
+.entry-star {
+	margin-left: 15px;
+}
+
 .header {
 	border-bottom: grey 2px solid;
 	margin-top: -8px;
@@ -45,8 +53,6 @@ span.form-control-feedback {
 	border-bottom-right-radius: 3px;
 	border-top: 1px solid #dddddd;
 	padding: 0px 15px 1px 15px;
-	padding-top: 0px;
-	padding-bottom: 1px;
 	margin-bottom: 0px;
 }
 

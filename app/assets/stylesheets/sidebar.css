@@ -3,6 +3,11 @@ img.feed-icon {
 	width: 18px;
 }
 
+#sidebar-star {
+	display: inline;
+	margin-right: 2px;
+}
+
 span.badge {
 	display: inline;
 }

@@ -5,7 +5,6 @@ Bsstrss.Views.FeedIndexItem = Backbone.View.extend({
 	initialize: function() {
 		this.listenTo(this.model, 'read', this.updateReadCount);
 		this.listenTo(this.model, "sync", this.render);
-		// this.listenTo(this.model.entries, 'add', console.log(this.model.get('title') + ' adding entry'));
 	},
 
 	render: function() {
