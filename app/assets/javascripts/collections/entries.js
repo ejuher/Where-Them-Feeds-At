@@ -6,7 +6,7 @@ Bsstrss.Collections.Entries = Backbone.Collection.extend({
 	model: Bsstrss.Models.Entry,
 
 	comparator: function(entry) {
-		return entry.get("id");
+		return -entry.get("published");
 	},
 
 	initialize: function(models, options) {
