@@ -1,7 +1,7 @@
 module Api
 	class FavoritesController < ApplicationController
 		def index
-			@favorites = Favorite.all
+			@favorites = current_user.favorites.count
 			render json: @favorites
 		end
 

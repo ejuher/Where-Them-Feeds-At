@@ -9,4 +9,6 @@ json.entries @entries do |entry|
 	json.(entry, :id, :title, :published, :image, :summary)
 	entry_read = current_user.entry_reads.find_by_entry_id(entry.id)
 	json.entry_read_id (!!entry_read ? entry_read.id : nil)
+	fav = current_user.favorites.find_by_entry_id(entry.id)
+	json.favorite_id (!!fav ? fav.id : nil)
 end

@@ -7,8 +7,9 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 	},
 
 	events: {
-		'click input.read': 'toggleRead',
-		'click .entry-title': 'read'
+		'click input.read'            : 'toggleRead',
+		'click .entry-title'          : 'read',
+		'click .glyphicon-star-empty' : 'toggleFave'
 	},
 
 	render: function() {
