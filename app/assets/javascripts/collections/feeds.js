@@ -2,6 +2,13 @@ Bsstrss.Collections.Feeds = Backbone.Collection.extend({
 	url: '/api/feeds',
 	model: Bsstrss.Models.Feed,
 
+	parse: function(jsonResp, options) {
+		if (typeof(jsonResp[0].faves) != 'undefined')  {
+			this.faveCount = jsonResp[0].faves;
+		}
+		return jsonResp;
+	},
+
 	getOrFetch: function(id) {
 		var feeds = this;
 		var feed = this.get(id);

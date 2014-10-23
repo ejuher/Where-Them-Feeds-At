@@ -18,7 +18,10 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 		// if this.model.entry_read_id != nil, mark as checked
 		if (!!this.model.get('entry_read_id')) {
 			this.$el.find('input.read').prop('checked', true);
-			this.$el.find('.panel-body').addClass('hidden')
+			this.$el.find('.panel-body').addClass('hidden');
+		}
+		if (!!this.model.get('favorite_id')) {
+			this.$el.find('entry-star').addClass('faved');
 		}
 		return this;
 	},
@@ -30,7 +33,7 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 			read.save([], {
 				success: function() {
 					this.$el.find('.panel-body').fadeOut();
-					this.model.set('entry_read_id', read.id)
+					this.model.set('entry_read_id', read.id);
 					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
 					feed.trigger('read', true);
 				}.bind(this)
@@ -61,5 +64,31 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 				}.bind(this)
 			})
 		}
-	}
+	},
+
+	toggleFave: function(event) {
+		debugger
+		if ($(event.currentTarget).hasClass('fave')) {
+			// un-fave
+			var fave = new Bsstrss.Models.Favorite({ id: this.model.get('favorite_id') });
+			fave.destroy({
+				success: function() {
+					this.$el.find('.entry-star').removeClass('faved');
+					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
+					feed.trigger('fave', false);
+				}.bind(this)
+			})
+		} else {
+			// fave
+			var fave = new Bsstrss.Models.Favorite({ entry_id: this.model.id });
+			fave.save([], {
+				success: function() {
+					this.$el.find('.panel-body').fadeOut();
+					this.model.set('favorite_id', fave.id);
+					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
+					feed.trigger('fave', true);
+				}.bind(this)
+			})
+		}
+	},
 })

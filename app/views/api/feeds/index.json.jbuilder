@@ -3,6 +3,7 @@ json.array! @feeds do |feed|
 	# number of unread entries
 	json.read_entries current_user.read_entries.where(feed_id: feed.id).count
 	json.num_entries feed.entries.count
+	json.faves @faves
 end
 
 

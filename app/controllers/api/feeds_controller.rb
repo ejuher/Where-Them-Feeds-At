@@ -1,7 +1,7 @@
 module Api
 	class FeedsController < ApplicationController
 		def index
-			# BUT, later you will want to show more feeds on the explore page
+			@faves = current_user.favorites.count
 			@feeds = current_user.feeds
 			render 'api/feeds/index'
 		end

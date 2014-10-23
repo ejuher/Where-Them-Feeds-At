@@ -5,10 +5,8 @@ window.Bsstrss = {
   Routers: {},
   initialize: function() {
     Bsstrss.feeds = new Bsstrss.Collections.Feeds();
-    Bsstrss.feeds.fetch();
 
     Bsstrss.entries = new Bsstrss.Collections.Entries([], {});
-    Bsstrss.entries.fetch();
 
     Bsstrss.reads = new Bsstrss.Collections.Reads();
     Bsstrss.reads.fetch();

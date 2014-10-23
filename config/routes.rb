@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 	  resources :entry_reads, only: [:index, :create, :destroy]
 	  resources :favorites, only: [:index, :create, :destroy]
 	  resources :subscriptions, only: [:destroy]
+	  get 'fave_count', to: "favorites#fave_count"
 	end
   
 	root to: "static_pages#index"

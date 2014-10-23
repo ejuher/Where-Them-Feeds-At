@@ -24,6 +24,11 @@ module Api
 			render json: favorite
 		end
 
+		def fave_count
+			@favorites = current_user.favorites.count
+			render json: @favorites
+		end
+
 		private 
 
 		def favorite_params
