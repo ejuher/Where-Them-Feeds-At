@@ -4,6 +4,8 @@ class Entry < ActiveRecord::Base
 	has_many :entry_reads
 	# has_many :entry_readers
 
+	has_many :favorites
+
 	paginates_per 6
 
 	def self.create_by_fj(fj, id)

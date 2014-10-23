@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 
 	has_many :entry_reads
 	has_many :read_entries, through: :entry_reads, source: :entry
+
+	has_many :favorites
+	has_many :favorite_entries, through: :favorites, source: :entry
 	
 
 	def self.generate_session_token

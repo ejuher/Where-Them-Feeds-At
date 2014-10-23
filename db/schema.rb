@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016171314) do
+ActiveRecord::Schema.define(version: 20141022194927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(version: 20141016171314) do
   add_index "entry_reads", ["entry_id", "user_id"], name: "index_entry_reads_on_entry_id_and_user_id", using: :btree
   add_index "entry_reads", ["entry_id"], name: "index_entry_reads_on_entry_id", using: :btree
   add_index "entry_reads", ["user_id"], name: "index_entry_reads_on_user_id", using: :btree
+
+  create_table "favorites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "entry_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "feed_categories", force: true do |t|
     t.integer  "feed_id"
