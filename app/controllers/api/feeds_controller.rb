@@ -2,6 +2,7 @@ module Api
 	class FeedsController < ApplicationController
 		def index
 			@faves = current_user.favorites.count
+			@read_entries = current_user.read_entries
 			@feeds = current_user.feeds
 			render 'api/feeds/index'
 		end
