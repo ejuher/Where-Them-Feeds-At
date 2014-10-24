@@ -16,8 +16,7 @@ Bsstrss.Views.FaveCount = Backbone.View.extend({
 		return this;
 	},
 
-	incrementFave: function(addFave) {
-		debugger
+	incrementFave: function(event, addFave) {
 		var $favesEl = this.$el.find('.badge');
 		var faves = $favesEl.text();
 		addFave ? faves++ : faves--;
