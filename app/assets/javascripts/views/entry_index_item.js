@@ -35,7 +35,6 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 					this.$el.find('.panel-body').fadeOut();
 					this.model.set('entry_read_id', read.id);
 					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
-					feed.trigger('read', true);
 				}.bind(this)
 			})
 		} else {
@@ -47,20 +46,18 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 					this.$el.find('.panel-body').removeClass('hidden');
 					this.$el.find('.panel-body').fadeIn();
 					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
-					feed.trigger('read', false);
 				}.bind(this)
 			})
 		}
 	},
 
 	read: function (event) {
-		if (!this.model.get('entry_read_id')) {
+		if (!this.$el.find('input.read')[0].checked) {
 			var read = new Bsstrss.Models.Read({ entry_id: this.model.id });
 			read.save([], {
 				success: function() {
 					this.model.set('entry_read_id', read.id);
 					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
-					feed.trigger('read', true);
 				}.bind(this)
 			})
 		}
