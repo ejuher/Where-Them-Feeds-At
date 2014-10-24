@@ -2,13 +2,8 @@ Bsstrss.Views.FaveCount = Backbone.View.extend({
 	template: JST['faves/count'],
 	tagName: 'li',
 
-	intialize: function() {
-		// can i really listen on the this.$el object?
-		// this.listenTo(this.$el, 'fave', this.incrementFave);
-	},
-
 	events: {
-
+		'fave .badge' : 'incrementFave'
 	},
 
 	render: function() {
@@ -22,7 +17,8 @@ Bsstrss.Views.FaveCount = Backbone.View.extend({
 	},
 
 	incrementFave: function(addFave) {
-		var $favesEl = this.$el.find('badge');
+		debugger
+		var $favesEl = this.$el.find('.badge');
 		var faves = $favesEl.text();
 		addFave ? faves++ : faves--;
 		$favesEl.html(faves);

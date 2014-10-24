@@ -6,7 +6,6 @@ Bsstrss.Views.FeedsIndex = Backbone.CompositeView.extend({
 	initialize: function() {
 		this.listenTo(this.collection, 'remove', this.render);
 		this.listenTo(this.collection, 'add', this.addFeed);
-		// this.listenTo();
 	},
 
 	addFeed: function(feed) {

@@ -21,7 +21,7 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 			this.$el.find('.panel-body').addClass('hidden');
 		}
 		if (!!this.model.get('favorite_id')) {
-			this.$el.find('entry-star').addClass('faved');
+			this.$el.find('.entry-star').addClass('faved');
 		}
 		return this;
 	},
@@ -64,11 +64,14 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 	},
 
 	toggleFave: function(event) {
-		if ($(event.currentTarget).hasClass('fave')) {
+		if ($(event.currentTarget).hasClass('faved')) {
 			// un-fave
+			// i need to set model id
+			// could use this.fave
 			var fave = new Bsstrss.Models.Favorite({ id: this.model.get('favorite_id') });
 			fave.destroy({
 				success: function() {
+					debugger
 					this.$el.find('.entry-star').removeClass('faved');
 					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
 					feed.trigger('fave', false);
@@ -83,6 +86,7 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 					this.$el.find('.entry-star').addClass('faved');
 					// this.model.set('favorite_id', fave.id);
 					var feed = Bsstrss.feeds.getOrFetch(this.model.get('feed_id'));
+					this.model.set('favorite_id', fave.id);
 					feed.trigger('fave', true);
 				}.bind(this)
 			})
