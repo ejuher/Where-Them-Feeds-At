@@ -6,9 +6,9 @@ div.checkbox {
 	margin-left: 15px;
 }
 
-.faved {
-	color: yellow;
-	text-shadow: 0px 0px 2px black;
+.glyphicon-star {
+	color: gold;
+	text-shadow: 0px 0px 0.25px black;
 }
 
 .header {

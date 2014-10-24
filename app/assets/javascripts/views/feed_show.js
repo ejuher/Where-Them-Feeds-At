@@ -5,7 +5,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	initialize: function() {
 		$(window).off("scroll");
-		// this.firstRender = true;
 		this.paginate = true;
 		if (this.model.entry) { 
 			this.addEntryShow(this.model.entry); 
@@ -18,12 +17,12 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	events: {
-		'click button#sign-out': 'signOut',
-		'keydown #add-feed': 'clearErrors',
-		'submit #add-feed': 'addFeed',
-		'click #menu-toggle': 'toggleMenu',
-		'click button#unsubscribe': 'unsubscribe',
-		'click button#refresh': 'refresh',
+		'click button#sign-out'    : 'signOut',
+		'keydown #add-feed'        : 'clearErrors',
+		'submit #add-feed'         : 'addFeed',
+		'click #menu-toggle'       : 'toggleMenu',
+		'click button#unsubscribe' : 'unsubscribe',
+		'click button#refresh'     : 'refresh',
 	},
 
 	unShiftEntry: function (entry) {
@@ -52,7 +51,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	render: function() {
 		var renderContent = this.template({ feed: this.model });
 		this.$el.html(renderContent);
-		// this.sortEntries();
 		this.attachSubviews();
 		this.listenForScroll();
 		return this;
@@ -97,7 +95,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 		];
 
 		event.preventDefault();
-		// this.$el.find('div#entries').html(this.loadingAnimation());
 		this.$el.find('div#entries').html(this.customLoadingAnimation({ 
 			msg: 'Where them feeds at???'
 		}))
@@ -165,7 +162,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	refresh: function(event) {
 		this.$el.find('div#entries').html(this.loadingAnimation());
-		//the dummy ALL feed
 		if (this.model.isNew()) {
 			var oldEntries = this.model.entries();
 			this.model.entries().fetch({

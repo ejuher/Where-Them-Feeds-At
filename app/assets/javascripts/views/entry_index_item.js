@@ -7,9 +7,9 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 	},
 
 	events: {
-		'click input.read'            : 'toggleRead',
-		'click .entry-title'          : 'read',
-		'click .glyphicon-star-empty' : 'toggleFave'
+		'click input.read'   : 'toggleRead',
+		'click .entry-title' : 'read',
+		'click .entry-star'  : 'toggleFave'
 	},
 
 	render: function() {
@@ -21,7 +21,10 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 			this.$el.find('.panel-body').addClass('hidden');
 		}
 		if (!!this.model.get('favorite_id')) {
-			this.$el.find('.entry-star').addClass('faved');
+			this.$el.find('.entry-star')
+				.removeClass('glyphicon-star-empty')
+				.addClass('glyphicon-star')
+				.addClass('faved');
 		}
 		return this;
 	},
@@ -69,7 +72,11 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 			var fave = new Bsstrss.Models.Favorite({ id: this.model.get('favorite_id') });
 			fave.destroy({
 				success: function() {
-					this.$el.find('.entry-star').removeClass('faved');
+					console.log('unfave');
+					this.$el.find('.entry-star')
+						.removeClass('faved')
+						.removeClass('glyphicon-star')
+						.addClass('glyphicon-star-empty');
 					$('#fave-badge').trigger('fave', false);
 				}.bind(this)
 			})
@@ -78,7 +85,10 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 			var fave = new Bsstrss.Models.Favorite({ entry_id: this.model.id });
 			fave.save([], {
 				success: function() {
-					this.$el.find('.entry-star').addClass('faved');
+					this.$el.find('.entry-star')
+						.addClass('faved')
+						.removeClass('glyphicon-star-empty')
+						.addClass('glyphicon-star');
 					this.model.set('favorite_id', fave.id);
 					$('#fave-badge').trigger('fave', true);
 				}.bind(this)
