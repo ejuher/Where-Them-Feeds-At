@@ -6,6 +6,11 @@ div.checkbox {
 	margin-left: 15px;
 }
 
+.faved {
+	color: yellow;
+	text-shadow: 0px 0px 2px black;
+}
+
 .header {
 	border-bottom: grey 2px solid;
 	margin-top: -8px;

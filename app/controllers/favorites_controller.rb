@@ -32,7 +32,7 @@ module Api
 		private 
 
 		def favorite_params
-			params.require(:favorite).require(:favorite_id)
+			params.require(:favorite).require(:entry_id)
 		end
 	end
 end
