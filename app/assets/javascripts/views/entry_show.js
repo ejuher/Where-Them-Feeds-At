@@ -13,6 +13,12 @@ Bsstrss.Views.EntryShow = Backbone.View.extend({
 	render: function() {
 		var renderContent = this.template({ entry: this.model });
 		this.$el.html(renderContent);
+		if (!!this.model.get('favorite_id')) {
+			this.$el.find('.entry-show-star')
+			.removeClass('glyphicon-star-empty')
+			.addClass('glyphicon-star')
+			.addClass('faved');
+		}
 		return this;
 	},
 
