@@ -2,7 +2,7 @@ user_entry_reads = current_user.entry_reads
 user_favorites = current_user.favorites
 json.partial!(
 	"entry", 
-	entry: entry, 
+	entry: @entry, 
 	entry_reads: user_entry_reads, 
 	favorites: user_favorites
 )
