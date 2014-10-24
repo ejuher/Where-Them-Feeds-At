@@ -1,8 +1,8 @@
 module Api
 	class FavoritesController < ApplicationController
 		def index
-			@favorites = current_user.favorites.count
-			render json: @favorites
+			@entries = current_user.favorite_entries.includes(:feed).order(published: :desc).page params[:page]
+			render '/api/entries/index'
 		end
 
 		def create

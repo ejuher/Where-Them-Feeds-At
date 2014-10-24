@@ -1,6 +1,12 @@
 Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 
 	initialize: function(options) {
+		Bsstrss.feeds     = new Bsstrss.Collections.Feeds();
+    Bsstrss.entries   = new Bsstrss.Collections.Entries([], {});
+    Bsstrss.favorites = new Bsstrss.Collections.Favorites([], {});
+    Bsstrss.reads     = new Bsstrss.Collections.Reads();
+    Bsstrss.reads.fetch();
+
 		this.$sidebar = options.$sidebar;
 		this.$content = options.$content;
 	},
@@ -43,6 +49,15 @@ Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 		feed.entry = entry;
 		var feedShowView = new Bsstrss.Views.FeedShow({ model: feed	});
 		this._swapViews(this.$content, feedShowView);
+	},
+
+	showFaves: function() {
+		Bsstrss.favorites.fetch();
+		var feed = new Bsstrss.Models.Feed();
+		feed.set('title', 'Favorites');
+		feed._entries = Bsstrss.favorites;
+		var favoriteEntriesView = new Bsstrss.Views.FeedShow({ model: feed });
+		this._swapViews(this.$content, favoriteEntriesView);
 	},
 
 	_swapViews: function($target, view) {

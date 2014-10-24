@@ -17,7 +17,6 @@ Bsstrss.Collections.Entries = Backbone.Collection.extend({
 	getNextPage: function() {
 		this.page += 1;
 		this.fetch({ 
-
 			remove: false, data: { page: this.page }
 		});
 	},

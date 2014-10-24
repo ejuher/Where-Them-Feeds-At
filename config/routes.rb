@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 	  		resources :entries, only: [:index]
 	  	end
 	  resources :entry_reads, only: [:index, :create, :destroy]
-	  resources :favorites, only: [:index, :create, :destroy]
+	  resources :favorites, 
+	  	only: [:index, :create, :destroy],
+	  	defaults: { format: :json }
 	  resources :subscriptions, only: [:destroy]
 	  get 'fave_count', to: "favorites#fave_count"
 	end
