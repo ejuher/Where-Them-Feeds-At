@@ -27,14 +27,12 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	unShiftEntry: function (entry) {
-		console.log('unshifting entry');
 		var included = false;
     this.subviews()["div#entries"].forEach(function(subview) {
     	if(subview.model.id === entry.id) {
         included = true;
     	}
     });
-    console.log(included);
     if(!included) {
       var newEntry = new Bsstrss.Views.EntryIndexItem({ model: entry });
 		  this.unshiftSubview("div#entries", newEntry);
@@ -107,7 +105,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 			var msg = messages[Math.floor((Math.random() * messages.length))];
 			var renderContent = this.customLoadingAnimation({ msg: msg });
 			this.$el.find('div#entries').html(renderContent);
-			console.log('rendering message');
 		}
 		var intervalId = setInterval(addMessage.bind(this), 6000);
 	  var $form = $(event.currentTarget);
@@ -175,7 +172,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 				data: {refresh: true},
 				silent: true,
 				success: function() {
-					console.log('refresh success');
 					Backbone.history.loadUrl();
 				}
 			});
