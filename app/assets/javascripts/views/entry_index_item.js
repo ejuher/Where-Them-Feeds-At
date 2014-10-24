@@ -72,7 +72,6 @@ Bsstrss.Views.EntryIndexItem = Backbone.View.extend({
 			var fave = new Bsstrss.Models.Favorite({ id: this.model.get('favorite_id') });
 			fave.destroy({
 				success: function() {
-					console.log('unfave');
 					this.$el.find('.entry-star')
 						.removeClass('faved')
 						.removeClass('glyphicon-star')

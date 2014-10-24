@@ -6,6 +6,11 @@ div.checkbox {
 	margin-left: 15px;
 }
 
+.entry-show-star {
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
 .glyphicon-star {
 	color: gold;
 	text-shadow: 0px 0px 0.25px black;
