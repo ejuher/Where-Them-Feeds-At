@@ -2,6 +2,28 @@ div.checkbox {
 	display: inline-block;
 }
 
+.entry-footer {
+	background-color: whitesmoke;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-top: 1px solid #dddddd;
+	padding: 0px 15px 1px 15px;
+	margin-bottom: 0px;
+}
+
+.entry-index-item {
+	max-height: 400px;
+	overflow: hidden;
+	padding-bottom: 0px;
+}
+
+.entry-index-item img {
+	max-height: 200px;
+	float: left;
+	margin-right: 30px;
+	margin-left: 15px;
+}
+
 .entry-star {
 	margin-left: 15px;
 }
@@ -22,21 +44,16 @@ div.checkbox {
 	margin-bottom: 15px;
 }
 
-.entry-index-item {
-	max-height: 400px;
-	overflow: hidden;
-	padding-bottom: 0px;
-}
-
 .overlay {
 	background-color: rgba(255, 255, 255, 0.75);
 }
 
-.entry-index-item img {
-	max-height: 200px;
-	float: left;
-	margin-right: 30px;
-	margin-left: 15px;
+.panel-body {
+	overflow: hidden;
+}
+
+#refresh {
+	width: 75px;
 }
 
 small.published {
@@ -44,25 +61,11 @@ small.published {
 	float: right;
 }
 
-.sub-heading {
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
 span.form-control-feedback {
 	top: 0px;
 }
 
-.panel-body {
-	overflow: hidden;
+.sub-heading {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
-
-.entry-footer {
-	background-color: whitesmoke;
-	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
-	border-top: 1px solid #dddddd;
-	padding: 0px 15px 1px 15px;
-	margin-bottom: 0px;
-}
-

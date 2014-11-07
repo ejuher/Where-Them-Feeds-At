@@ -143,7 +143,9 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	},
 
 	refresh: function(event) {
-		this.$el.find('div#entries').html(this.loadingAnimation());
+		this.$el.find('#refresh')
+			.html("<img src='/images/ajax-loader.gif'>")
+			.attr('disabled','true');
 		if (this.model.isNew()) {
 			var oldEntries = this.model.entries();
 			this.model.entries().fetch({
@@ -160,27 +162,4 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 			});
 		}
 	},
-
-	_randomLoadingMessages: function() {
-		var messages = [
-			'Gotta get me them feeds',
-			'The feed hunt is on',
-			'This feed must be found',
-			'Who hid these feeds?',
-			'I am a relentless feed finder of the highest caliber',
-			'Them feeds: where they at?',
-			'I feel the need, to find some feed',
-			"Hello, are you the feed I'm looking for?"
-		];
-
-		this.$el.find('div#entries').html(this.customLoadingAnimation({ 
-			msg: 'Where them feeds at???'
-		}))
-		var addMessage = function() {
-			var msg = messages[Math.floor((Math.random() * messages.length))];
-			var renderContent = this.customLoadingAnimation({ msg: msg });
-			this.$el.find('div#entries').html(renderContent);
-		}
-		return setInterval(addMessage.bind(this), 6000);
-	}
 })
