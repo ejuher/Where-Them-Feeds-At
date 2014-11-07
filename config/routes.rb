@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 	
 	namespace :api do
 		resources :entries, 
-			only: [:create, :index, :show], 
+			only: [:index, :show], 
 			defaults: { format: :json }
 	  resources :feeds, 
 	  	only: [:create, :index, :show],
