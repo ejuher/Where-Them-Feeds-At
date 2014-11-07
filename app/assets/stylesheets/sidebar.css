@@ -9,5 +9,7 @@ img.feed-icon {
 }
 
 span.badge {
-	display: inline;
+	float: right;
+	margin: 11px 1em 0px 0px;
+	text-indent: 0px;
 }
