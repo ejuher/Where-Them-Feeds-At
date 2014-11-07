@@ -12,7 +12,7 @@ gem 'backbone-on-rails'
 gem 'opengraph_parser'
 gem 'kaminari'
 
-gem 'spinjs-rails'
+gem 'delayed_job_active_record'
 
 gem 'thin'
 gem "bullet", :group => "development"

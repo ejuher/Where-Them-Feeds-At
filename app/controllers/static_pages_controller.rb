@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 		if logged_in?
 			# refresh all feeds if its been more than 10 minutes
 			if !Entry.all.empty? && (Time.now - Entry.pluck(:created_at).max) > 900 
-				current_user.feeds.each { |feed| feed.get_entries }
+				current_user.delay.feeds.each { |feed| feed.get_entries }
 				# want to asynchronously make this get_entries call
 				# while its checking the rss feeds, do not allow user to 
 				# press refresh. Once feeds have been refreshed, allow user
