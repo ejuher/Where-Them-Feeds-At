@@ -3,9 +3,9 @@ class StaticPagesController < ApplicationController
 	def index
 		if logged_in?
 			# refresh all feeds if its been more than 10 minutes
-			if !Entry.all.empty? && (Time.now - Entry.pluck(:created_at).max) > 900 
+			# if !Entry.all.empty? && (Time.now - Entry.pluck(:created_at).max) > 900 
 				current_user.feeds.each { |feed| feed.delay.get_entries }
-			end
+			# end
 			render :index
 		else
 			redirect_to welcome_url

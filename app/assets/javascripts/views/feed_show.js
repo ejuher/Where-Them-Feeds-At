@@ -84,21 +84,23 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 
 	addFeed: function(event) {
 		event.preventDefault();
-		var intervalId = this._randomLoadingMessages();
+		var $refresh = this.$el.find('#refresh')
+		
+		$refresh
+			.html("<img src='/images/ajax-loader.gif'>").attr('disabled','true');
 
+			
 	  var $form = $(event.currentTarget);
 	  var url = $form.find('input').val();
 	  $form.find('input').val('');
 	  var feed = new Bsstrss.Models.Feed({ feed_url: url });
 	  feed.save({}, {
 	    success: function () {
-	    	clearInterval(intervalId);
 	    	Bsstrss.feeds.add(feed) 
 		    var feedShow = new Bsstrss.Views.FeedShow({ model: feed })
 		    Backbone.history.navigate("/feed/" + feed.id, { trigger: true })
 	    },
 	    error: function() {
-	    	clearInterval(intervalId);
 	    	var $input = $form.find('input');
 	    	var $div = $form.find('div');
 	    	var $span = $("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
@@ -106,7 +108,9 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 	    	$input.attr('placeholder', 'Invalid URL');
 	    	$div.addClass('has-error');
 	    	$div.append($span);
-	    	location.href = "/"
+	    	$refresh
+					.html("Refresh")
+					.attr('disabled','false');
 	    }
 	  });
 	},
