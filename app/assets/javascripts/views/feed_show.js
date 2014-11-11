@@ -151,11 +151,11 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 			.html("<img src='/images/ajax-loader.gif'>")
 			.attr('disabled','true');
 		if (this.model.isNew()) {
-			var oldEntries = this.model.entries();
 			this.model.entries().fetch({
 				data: {refresh: true},
 				silent: true,
 				success: function() {
+					console.log('success');
 					Backbone.history.loadUrl();
 				}
 			});
