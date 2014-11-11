@@ -13,6 +13,7 @@ gem 'opengraph_parser'
 gem 'kaminari'
 
 gem 'delayed_job_active_record'
+gem 'clockwork'
 
 gem 'thin'
 gem "bullet", :group => "development"

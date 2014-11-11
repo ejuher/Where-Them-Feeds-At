@@ -6,9 +6,6 @@ class Feed < ActiveRecord::Base
 	has_many :subscriptions
 	has_many :users, through: :subscriptions
 
-	has_many :feed_categories
-	has_many :categories, through: :feed_categories
-
 	def self.find_or_create_by_url(url)
 		feed = Feed.find_by_feed_url(url)
 

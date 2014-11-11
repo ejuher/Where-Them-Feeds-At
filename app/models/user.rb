@@ -10,9 +10,6 @@ class User < ActiveRecord::Base
 	has_many :subscriptions
 	has_many :feeds, through: :subscriptions
 
-	has_many :user_categories
-	has_many :categories, through: :user_categories
-
 	has_many :entries, through: :feeds
 
 	has_many :entry_reads

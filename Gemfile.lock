@@ -55,6 +55,9 @@ GEM
     bullet (4.13.2)
       activesupport (>= 3.0.0)
       uniform_notifier (>= 1.6.0)
+    clockwork (1.0.0)
+      activesupport
+      tzinfo
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -202,6 +205,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   bullet
+  clockwork
   coffee-rails (~> 4.0.0)
   debugger
   delayed_job_active_record
