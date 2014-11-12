@@ -33,7 +33,6 @@ module Api
 		private
 
 		def feed_params
-			# params.require(:feed).permit(:feed_url, :refresh);
 			params.require(:feed).permit(:feed_url);
 		end
 	end

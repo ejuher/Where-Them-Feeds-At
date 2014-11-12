@@ -12,7 +12,7 @@ class Feed < ActiveRecord::Base
 		if !feed
 			fj_feed = Feedjira::Feed.fetch_and_parse(url)
 
-			if fj_feed.class != Feedjira::Parser::RSSFeedBurner 
+			if fj_feed == 0
 				return nil
 			else
 				feed = Feed.create!({
@@ -30,7 +30,7 @@ class Feed < ActiveRecord::Base
 	def get_entries
 		fj_feed = Feedjira::Feed.fetch_and_parse(self.feed_url)
 		existing_entry_urls = self.entries.pluck(:url)
-		if fj_feed.class != Feedjira::Parser::RSSFeedBurner 
+		if fj_feed == 0
 			puts "dead url: #{self.feed_url}"
 		else
 			fj_feed.entries.reverse.each do |entry|
