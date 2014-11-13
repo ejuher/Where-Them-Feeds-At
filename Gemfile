@@ -46,6 +46,19 @@ group :development do
   gem 'quiet_assets'
 end
 
+group :development, :test do
+	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+	gem 'debugger'
+end
+
+group :test do 
+	gem 'faker' 
+	gem 'capybara' 
+	gem 'guard-rspec' 
+	gem 'launchy' 
+end 
+
 gem 'bcrypt'
 
 # Use ActiveModel has_secure_password
@@ -56,7 +69,3 @@ gem 'bcrypt'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-# Use debugger
-gem 'debugger', group: [:development, :test]
-
