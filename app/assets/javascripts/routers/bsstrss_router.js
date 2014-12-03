@@ -1,3 +1,4 @@
+'use strict';
 Bsstrss.Routers.BsstrssRouter = Backbone.Router.extend({
 
 	initialize: function(options) {

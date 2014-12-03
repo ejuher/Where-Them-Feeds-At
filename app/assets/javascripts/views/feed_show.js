@@ -155,7 +155,6 @@ Bsstrss.Views.FeedShow = Backbone.CompositeView.extend({
 				data: {refresh: true},
 				silent: true,
 				success: function() {
-					console.log('success');
 					Backbone.history.loadUrl();
 				}
 			});
